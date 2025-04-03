@@ -1,0 +1,1584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | AnimalSaveIndia</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <style>
+        /* Modern Reset with Dark Vegan Theme */
+        :root {
+            --primary: #5CCC60; /* Softer green */
+            --primary-light: rgba(92, 204, 96, 0.2);
+            --secondary: #8BC34A; /* Light green */
+            --accent: #AED581; /* Soft green */
+            --dark: #121212;
+            --darker: #0A0A0A;
+            --light: #FFFFFF;
+            --gray: #9E9E9E;
+            --light-gray: rgba(255, 255, 255, 0.1);
+            --glass: rgba(30, 30, 30, 0.6); /* Darker glass effect */
+            --border-radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --flag-orange: #FF9933;
+            --flag-white: #FFFFFF;
+            --flag-green: #138808;
+            --flag-blue: #000080;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+            overflow-x: hidden;
+        }
+
+        /* Loading Screen - Fixed Layout */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--darker);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .loading-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .loading-background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, var(--primary-light) 0%, transparent 30%),
+                radial-gradient(circle at 80% 70%, rgba(139, 195, 74, 0.2) 0%, transparent 30%);
+            opacity: 0.3;
+            animation: pulse 8s infinite alternate;
+        }
+
+        .loading-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .loading-message {
+            font-size: 2rem;
+            margin-bottom: 40px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+        }
+
+        .loading-message::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--primary));
+            background-size: 200% 100%;
+            border-radius: 2px;
+            animation: shine-border 4s linear infinite;
+        }
+
+        .loading-spinner {
+            width: 70px;
+            height: 70px;
+            border: 5px solid var(--light-gray);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            position: relative;
+            animation: spin 1.5s linear infinite;
+        }
+
+        .loading-spinner::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 5px solid transparent;
+            border-radius: 50%;
+            border-bottom-color: var(--secondary);
+            animation: spinReverse 2s linear infinite;
+        }
+
+        .loading-animals {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .loading-animal {
+            position: absolute;
+            font-size: 3rem;
+            opacity: 0;
+            animation: floatAnimal 15s linear infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.2; }
+            50% { transform: scale(1.1); opacity: 0.3; }
+            100% { transform: scale(1); opacity: 0.2; }
+        }
+
+        @keyframes loadingLine {
+            0% { transform: scaleX(0); }
+            50% { transform: scaleX(1); }
+            100% { transform: scaleX(0); transform-origin: right; }
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes spinReverse {
+            to { transform: rotate(-360deg); }
+        }
+
+        @keyframes floatAnimal {
+            0% { transform: translateY(100vh) translateX(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.3; }
+            90% { opacity: 0.3; }
+            100% { transform: translateY(-100px) translateX(100px) rotate(360deg); opacity: 0; }
+        }
+
+        /* Particle Background */
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.4;
+        }
+
+        /* Navigation */
+        .glass-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: var(--glass);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--light-gray);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .nav-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-animate {
+            position: relative;
+        }
+
+        .logo-animate .india {
+            background: linear-gradient(to right, var(--flag-orange), var(--flag-white), var(--flag-green));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            display: inline-block;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            position: relative;
+            padding: 8px 0;
+            color: var(--light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* Buttons - Improved for huly.io style */
+        .btn {
+            position: relative;
+            overflow: hidden;
+            border: none;
+            padding: 16px 36px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            z-index: 1;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transform-style: preserve-3d;
+            perspective: 500px;
+            will-change: transform;
+        }
+
+        .primary-btn {
+            background: linear-gradient(135deg, var(--primary), #4ab84e);
+            color: white;
+            box-shadow: 0 8px 20px rgba(92, 204, 96, 0.3);
+            border: none;
+            position: relative;
+        }
+
+        .primary-btn::after {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 50px;
+            background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
+            background-size: 200% 100%;
+            z-index: -2;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .primary-btn:hover::after {
+            opacity: 1;
+            animation: shine-border 4s linear infinite;
+        }
+
+        .primary-btn::before {
+            content: '';
+            position: absolute;
+            inset: 1px;
+            border-radius: 50px;
+            background: linear-gradient(135deg, var(--primary), #4ab84e);
+            z-index: -1;
+            transition: all 0.4s ease;
+        }
+
+        .secondary-btn {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--light);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .secondary-btn::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            right: -1px;
+            bottom: -1px;
+            border-radius: 50px;
+            background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
+            background-size: 200% 100%;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .primary-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 30px rgba(92, 204, 96, 0.4);
+        }
+
+        .secondary-btn:hover {
+            transform: translateY(-3px);
+            border-color: transparent;
+            box-shadow: 0 10px 25px rgba(92, 204, 96, 0.2);
+        }
+
+        .secondary-btn:hover::before {
+            opacity: 1;
+            animation: shine-border 4s linear infinite;
+        }
+
+        .btn .btn-text {
+            position: relative;
+            z-index: 3;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.4s ease;
+        }
+
+        .btn:hover .btn-text {
+            transform: translateX(5px);
+        }
+
+        @keyframes shine-border {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
+        /* Custom Ripple Effect */
+        .ripple-effect {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.7);
+            transform: scale(0);
+            animation: ripple 0.6s linear;
+            pointer-events: none;
+            width: 100px;
+            height: 100px;
+        }
+            
+        @keyframes ripple {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        /* Legal Page Styles */
+        .legal-hero {
+            padding: 150px 5% 100px;
+            text-align: center;
+            min-height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .legal-hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
+        }
+
+        .legal-hero-bg-circle {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+        }
+
+        .legal-hero-bg-circle:nth-child(1) {
+            width: 400px;
+            height: 400px;
+            background: var(--primary);
+            top: 20%;
+            left: 10%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .legal-hero-bg-circle:nth-child(2) {
+            width: 500px;
+            height: 500px;
+            background: var(--secondary);
+            bottom: 10%;
+            right: 10%;
+            animation: float 10s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(5deg); }
+        }
+
+        .legal-hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 30px;
+            color: white;
+            position: relative;
+            text-wrap: balance;
+            background: linear-gradient(to right, #fff 0%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .legal-hero p {
+            color: var(--gray);
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+        }
+
+        /* Legal Content */
+        .legal-container {
+            display: flex;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 80px 5%;
+            position: relative;
+        }
+
+        .legal-sidebar {
+            width: 280px;
+            position: sticky;
+            top: 120px;
+            height: fit-content;
+            margin-right: 60px;
+            flex-shrink: 0;
+        }
+
+        .legal-sidebar-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .legal-sidebar-nav {
+            list-style: none;
+        }
+
+        .legal-sidebar-item {
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .legal-sidebar-link {
+            color: var(--gray);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            display: block;
+            padding: 10px 15px;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .legal-sidebar-link.active {
+            color: var(--light);
+            background: var(--glass);
+            border: 1px solid var(--light-gray);
+        }
+
+        .legal-sidebar-link:hover:not(.active) {
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .legal-sidebar-link::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 3px;
+            background: var(--primary);
+            border-radius: 3px;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .legal-sidebar-link.active::before,
+        .legal-sidebar-link:hover::before {
+            opacity: 1;
+        }
+
+        .legal-content {
+            flex: 1;
+            background: var(--glass);
+            border: 1px solid var(--light-gray);
+            border-radius: var(--border-radius);
+            padding: 60px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .legal-section {
+            margin-bottom: 80px;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .legal-section.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .legal-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .legal-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: var(--light);
+            position: relative;
+            display: inline-block;
+        }
+
+        .legal-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
+            background-size: 200% 100%;
+            border-radius: 2px;
+            animation: shine-border 4s linear infinite;
+        }
+
+        .legal-section h3 {
+            font-size: 1.8rem;
+            margin: 40px 0 20px;
+            color: var(--light);
+        }
+
+        .legal-section p {
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .legal-section ul {
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+
+        .legal-section li {
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .highlight {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 100px 5% 60px;
+            background: var(--darker);
+            border-top: 1px solid var(--light-gray);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.05;
+        }
+
+        .footer-bg-circle {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+        }
+
+        .footer-bg-circle:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            background: var(--primary);
+            top: 30%;
+            left: 20%;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        .footer-bg-circle:nth-child(2) {
+            width: 400px;
+            height: 400px;
+            background: var(--secondary);
+            bottom: 20%;
+            right: 15%;
+            animation: float 10s ease-in-out infinite;
+        }
+
+        /* Footer Animation - Conveyor Belt */
+        .footer-animation {
+            height: 120px;
+            width: 100%;
+            position: relative;
+            margin-bottom: 50px;
+            overflow: hidden;
+        }
+
+        .conveyor-belt {
+            display: flex;
+            position: absolute;
+            animation: scrollBelt 30s linear infinite;
+        }
+
+        .animal-icon {
+            font-size: 3rem;
+            margin: 0 40px;
+            transition: all 0.3s ease;
+            position: relative;
+            animation: floatIcon 5s ease-in-out infinite;
+        }
+
+        @keyframes scrollBelt {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        @keyframes floatIcon {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(5deg); }
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 50px;
+            max-width: 1200px;
+            margin: 0 auto 80px;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            display: inline-block;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .footer-description {
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--glass);
+            border: 1px solid var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light);
+            transition: var(--transition);
+            font-size: 1.2rem;
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 20px rgba(92, 204, 96, 0.3);
+        }
+
+        .footer-links h3 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            color: var(--light);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+            font-size: 1.1rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 60px;
+            border-top: 1px solid var(--light-gray);
+            color: var(--gray);
+            font-size: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .legal-hero h1 {
+                font-size: 3.5rem;
+            }
+            
+            .legal-container {
+                padding: 60px 5%;
+            }
+            
+            .legal-content {
+                padding: 50px 40px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .legal-hero h1 {
+                font-size: 3rem;
+            }
+            
+            .legal-container {
+                flex-direction: column;
+            }
+            
+            .legal-sidebar {
+                width: 100%;
+                position: static;
+                margin-right: 0;
+                margin-bottom: 40px;
+            }
+            
+            .legal-sidebar-nav {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            
+            .legal-sidebar-item {
+                margin-bottom: 0;
+            }
+            
+            .legal-sidebar-link {
+                padding: 8px 15px;
+            }
+            
+            .legal-section h2 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .glass-nav {
+                flex-direction: column;
+                gap: 20px;
+                padding: 20px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .legal-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .legal-hero p {
+                font-size: 1.2rem;
+            }
+            
+            .legal-content {
+                padding: 40px 30px;
+            }
+            
+            .legal-section h2 {
+                font-size: 2rem;
+            }
+            
+            .legal-section h3 {
+                font-size: 1.6rem;
+            }
+            
+            .footer-animation {
+                height: 80px;
+            }
+            
+            .animal-icon {
+                font-size: 2.5rem;
+                margin: 0 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .legal-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .legal-hero p {
+                font-size: 1rem;
+            }
+            
+            .legal-content {
+                padding: 30px 20px;
+            }
+            
+            .legal-section h2 {
+                font-size: 1.8rem;
+            }
+            
+            .legal-section h3 {
+                font-size: 1.4rem;
+            }
+            
+            .legal-section p, .legal-section li {
+                font-size: 1rem;
+            }
+            
+            .footer-animation {
+                height: 60px;
+            }
+            
+            .animal-icon {
+                font-size: 2rem;
+                margin: 0 15px;
+            }
+        }
+
+                /* Updated Navigation Styles */
+.nav-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.glass-nav {
+    transition: transform 0.3s ease;
+}
+
+/* Desktop Navigation */
+@media (min-width: 769px) {
+    .glass-nav.hide-nav {
+        transform: translateY(-100%);
+    }
+    
+    .nav-links {
+        display: flex;
+        gap: 30px;
+        margin: 0 auto;
+    }
+    
+    .mobile-menu-btn,
+    .mobile-join-btn {
+        display: none;
+    }
+    
+    .desktop-join-btn {
+        margin-left: auto;
+    }
+}
+
+/* Mobile Navigation */
+@media (max-width: 768px) {
+    .glass-nav.scrolling {
+        transform: translateY(-100%);
+    }
+    
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 300px;
+        height: 100vh;
+        background: var(--darker);
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 100px 30px 30px;
+        gap: 25px;
+        transition: right 0.3s ease;
+        z-index: 90;
+        border-left: 1px solid var(--light-gray);
+    }
+    
+    .nav-links.active {
+        right: 0;
+    }
+    
+    .desktop-join-btn {
+        display: none;
+    }
+    
+    .mobile-menu-btn {
+        display: flex;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.8rem;
+        cursor: pointer;
+        margin-left: auto;
+        z-index: 100;
+        padding: 10px;
+    }
+    
+    .mobile-menu-btn .close-icon {
+        display: none;
+    }
+    
+    .mobile-menu-btn.active .close-icon {
+        display: block;
+    }
+    
+    .mobile-menu-btn.active .menu-icon {
+        display: none;
+    }
+    
+    .mobile-join-btn {
+        margin-top: 30px;
+        width: 100%;
+    }
+}
+
+/* Active nav link highlighting */
+.nav-links a.active {
+    color: var(--primary);
+}
+
+.nav-links a.active::after {
+    width: 100%;
+}
+
+
+
+.footer {
+    padding: 60px 5% 40px;
+}
+
+.footer-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin-bottom: 50px;
+}
+
+.footer-col {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.footer-links {
+    margin-bottom: 30px;
+}
+
+.footer-links h3 {
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+}
+
+.footer-links ul {
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 12px;
+}
+
+.social-links {
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.footer-animation {
+    height: 80px;
+    margin-bottom: 30px;
+}
+
+.animal-icon {
+    font-size: 2.2rem;
+    margin: 0 20px;
+}
+
+.footer-bottom {
+    padding-top: 40px;
+    font-size: 0.9rem;
+}
+
+/* Tablet and Desktop Styles */
+@media (min-width: 768px) {
+    .footer {
+        padding: 100px 5% 60px;
+    }
+    
+    .footer-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 50px;
+    }
+    
+    .footer-col {
+        text-align: left;
+        margin-bottom: 0;
+    }
+    
+    .footer-links {
+        margin-bottom: 0;
+    }
+    
+    .social-links {
+        justify-content: flex-start;
+    }
+    
+    .footer-animation {
+        height: 120px;
+    }
+    
+    .animal-icon {
+        font-size: 3rem;
+        margin: 0 40px;
+    }
+}
+
+/* Large Desktop Styles */
+@media (min-width: 992px) {
+    .footer-grid {
+        max-width: 1200px;
+        margin: 0 auto 80px;
+    }
+}
+
+
+/* Made with Passion Section - Inspired by huly.io */
+.made-with-love {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 0;
+    font-size: 1.1rem;
+    color: var(--gray);
+    position: relative;
+    overflow: hidden;
+}
+
+.heart-icon {
+    margin: 0 8px;
+    font-size: 1.3rem;
+    display: inline-block;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: pulse 2s infinite;
+}
+
+.passion-text {
+    position: relative;
+    display: inline-block;
+}
+
+.passion-text:first-child::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, var(--primary), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+}
+
+.made-with-love:hover .passion-text:first-child::after {
+    transform: translateX(0);
+}
+
+.passion-text:last-child::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    right: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--primary));
+    transform: translateX(100%);
+    transition: transform 0.6s ease;
+}
+
+.made-with-love:hover .passion-text:last-child::before {
+    transform: translateX(0);
+}
+
+/* Animation for the heart */
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(1); opacity: 0.8; }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .made-with-love {
+        flex-direction: column;
+        gap: 5px;
+        margin: 20px 0;
+    }
+    
+    .heart-icon {
+        margin: 5px 0;
+        transform: rotate(90deg);
+    }
+}
+
+
+
+
+
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+}
+
+
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+        <div class="loading-container">
+            <div class="loading-background"></div>
+            <div class="loading-animals">
+                <div class="loading-animal" style="left: 10%; animation-delay: 0s;">🐄</div>
+                <div class="loading-animal" style="left: 30%; animation-delay: 2s;">🐖</div>
+                <div class="loading-animal" style="left: 50%; animation-delay: 4s;">🐓</div>
+                <div class="loading-animal" style="left: 70%; animation-delay: 6s;">🐑</div>
+                <div class="loading-animal" style="left: 90%; animation-delay: 8s;">🐟</div>
+            </div>
+            <div class="loading-content">
+                <div class="loading-message">Building a kinder world for <span class="changing-text">animals</span></div>
+                <div class="loading-spinner"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Particle Background -->
+    <div id="particles-js"></div>
+    
+    <!-- Navigation -->
+    <nav class="glass-nav">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <span class="logo-animate">AnimalSave<span class="india">India</span></span>
+            </a>
+            
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars menu-icon"></i>
+                <i class="fas fa-times close-icon"></i>
+            </button>
+            
+            <div class="nav-links">
+                <a href="/index.html">Home</a>
+                <a href="/OurStory.html">Our Story</a>
+                <a href="/whygovegan.html">Why Go Vegan</a>
+                <a href="/contacts.html">Contact</a>
+                <button class="btn primary-btn mobile-join-btn" onclick="window.location.href='/join.html'">
+                    <span class="btn-text">Join Us Now</span>
+                </button>
+            </div>
+            
+            <div class="desktop-join-btn">
+                <button class="btn primary-btn" onclick="window.location.href='/join.html'">
+                    <span class="btn-text">Join Us Now</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+
+    <!-- Hero Section -->
+    <section class="legal-hero">
+        <div class="legal-hero-bg">
+            <div class="legal-hero-bg-circle"></div>
+            <div class="legal-hero-bg-circle"></div>
+        </div>
+        <div class="privacy-heading-container">
+            <h1 class="privacy-heading">Privacy Policy</h1>
+            <p class="privacy-subheading">Last updated 2025</p>
+        </div>
+    </section>
+
+    <!-- Legal Content -->
+    <div class="legal-container">
+        <aside class="legal-sidebar">
+            <h2 class="legal-sidebar-title">Privacy Policy</h2>
+            <nav class="legal-sidebar-nav">
+                <li class="legal-sidebar-item">
+                    <a href="#introduction" class="legal-sidebar-link active">1. Introduction</a>
+                </li>
+                <li class="legal-sidebar-item">
+                    <a href="#collection" class="legal-sidebar-link">2. Information We Collect</a>
+                </li>
+                <li class="legal-sidebar-item">
+                    <a href="#use" class="legal-sidebar-link">3. How We Use Information</a>
+                </li>
+                <li class="legal-sidebar-item">
+                    <a href="#sharing" class="legal-sidebar-link">4. Information Sharing</a>
+                </li>
+                <li class="legal-sidebar-item">
+                    <a href="#security" class="legal-sidebar-link">5. Security</a>
+                </li>
+                <li class="legal-sidebar-item">
+                    <a href="#retention" class="legal-sidebar-link">6. Data Retention</a>
+                </li>
+                <li class="legal-sidebar-item">
+                    <a href="#rights" class="legal-sidebar-link">7. Your Rights</a>
+                </li>
+                <li class="legal-sidebar-item">
+                    <a href="#children" class="legal-sidebar-link">8. Children's Privacy</a>
+                </li>
+                <li class="legal-sidebar-item">
+                    <a href="#changes" class="legal-sidebar-link">9. Policy Changes</a>
+                </li>
+                <li class="legal-sidebar-item">
+                    <a href="#contact" class="legal-sidebar-link">10. Contact Us</a>
+                </li>
+            </nav>
+        </aside>
+
+        <main class="legal-content">
+            <section id="introduction" class="legal-section active">
+                <h2>1. Introduction</h2>
+                <p>AnimalSaveIndia ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website, mobile application, or use our services (collectively, the "Service").</p>
+                
+                <h3>1.1 Consent</h3>
+                <p>By using the Service, you consent to the collection and use of information in accordance with this policy. If you do not agree with our policies and practices, please do not use our Service.</p>
+                
+                <h3>1.2 Scope</h3>
+                <p>This policy applies to information we collect:</p>
+                <ul>
+                    <li>On our website and mobile applications</li>
+                    <li>In email, text, and other electronic communications</li>
+                    <li>Through third-party applications integrated with our Service</li>
+                </ul>
+                
+                <h3>1.3 Changes to Policy</h3>
+                <p>We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date.</p>
+            </section>
+
+            <section id="collection" class="legal-section">
+                <h2>2. Information We Collect</h2>
+                <p>We collect several types of information from and about users of our Service, including:</p>
+                
+                <h3>2.1 Personal Information</h3>
+                <p>Information that identifies you personally, such as:</p>
+                <ul>
+                    <li>Name and contact details (email, phone number, address)</li>
+                    <li>Account credentials (username and password)</li>
+                    <li>Payment information for donations or purchases</li>
+                    <li>Demographic information (age, gender, location)</li>
+                </ul>
+                
+                <h3>2.2 Non-Personal Information</h3>
+                <p>Information that does not identify you personally, including:</p>
+                <ul>
+                    <li>Browser type and version</li>
+                    <li>Device information (type, operating system)</li>
+                    <li>Usage data (pages visited, time spent)</li>
+                    <li>Cookies and tracking technologies data</li>
+                </ul>
+                
+                <h3>2.3 How We Collect Information</h3>
+                <p>We collect information:</p>
+                <ul>
+                    <li>Directly from you when you provide it to us (registration, forms, etc.)</li>
+                    <li>Automatically as you navigate through the Service (cookies, analytics)</li>
+                    <li>From third parties (social media platforms, payment processors)</li>
+                </ul>
+            </section>
+
+            <section id="use" class="legal-section">
+                <h2>3. How We Use Information</h2>
+                <p>We use the information we collect for various purposes, including:</p>
+                
+                <h3>3.1 Service Operation</h3>
+                <ul>
+                    <li>To provide and maintain our Service</li>
+                    <li>To notify you about changes to our Service</li>
+                    <li>To allow you to participate in interactive features</li>
+                </ul>
+                
+                <h3>3.2 Communication</h3>
+                <ul>
+                    <li>To respond to your inquiries and requests</li>
+                    <li>To send newsletters and promotional materials</li>
+                    <li>To provide updates about animal welfare initiatives</li>
+                </ul>
+                
+                <h3>3.3 Improvement</h3>
+                <ul>
+                    <li>To improve our Service and user experience</li>
+                    <li>To develop new features and functionality</li>
+                    <li>To conduct research and analysis</li>
+                </ul>
+                
+                <h3>3.4 Security</h3>
+                <ul>
+                    <li>To detect and prevent fraud and abuse</li>
+                    <li>To monitor and enforce our Terms of Service</li>
+                    <li>To protect the rights and safety of our users</li>
+                </ul>
+            </section>
+
+            <section id="sharing" class="legal-section">
+                <h2>4. Information Sharing</h2>
+                <p>We may share your information in the following circumstances:</p>
+                
+                <h3>4.1 Service Providers</h3>
+                <p>We may employ third-party companies and individuals to facilitate our Service ("Service Providers"), provide the Service on our behalf, perform Service-related services, or assist us in analyzing how our Service is used.</p>
+                
+                <h3>4.2 Legal Requirements</h3>
+                <p>We may disclose your information if required to do so by law or in response to valid requests by public authorities (e.g., court orders).</p>
+                
+                <h3>4.3 Business Transfers</h3>
+                <p>In connection with any merger, sale of company assets, financing, or acquisition of all or a portion of our business to another company.</p>
+                
+                <h3>4.4 With Your Consent</h3>
+                <p>We may share your information with third parties when we have your consent to do so.</p>
+                
+                <h3>4.5 Aggregated Data</h3>
+                <p>We may share aggregated, anonymized data that does not identify any individual for research, analysis, marketing, or other purposes.</p>
+            </section>
+
+            <section id="security" class="legal-section">
+                <h2>5. Security</h2>
+                <p>We implement appropriate technical and organizational measures to protect your personal information. However, no method of transmission over the Internet or method of electronic storage is 100% secure.</p>
+                
+                <h3>5.1 Security Measures</h3>
+                <ul>
+                    <li>Encryption of sensitive data in transit and at rest</li>
+                    <li>Regular security audits and vulnerability testing</li>
+                    <li>Access controls and authentication procedures</li>
+                    <li>Employee training on data protection</li>
+                </ul>
+                
+                <h3>5.2 Your Responsibilities</h3>
+                <p>You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account.</p>
+            </section>
+
+            <section id="retention" class="legal-section">
+                <h2>6. Data Retention</h2>
+                <p>We retain your personal information only for as long as is necessary for the purposes set out in this Privacy Policy.</p>
+                
+                <h3>6.1 Retention Periods</h3>
+                <ul>
+                    <li>Account data: Until account deletion request</li>
+                    <li>Transaction data: 7 years for tax purposes</li>
+                    <li>Cookies and analytics: Typically 2 years</li>
+                    <li>Marketing data: Until opt-out or account deletion</li>
+                </ul>
+                
+                <h3>6.2 Deletion</h3>
+                <p>You may request deletion of your personal information by contacting us. We will comply with your request unless we are required to retain the information for legal or legitimate business purposes.</p>
+            </section>
+
+            <section id="rights" class="legal-section">
+                <h2>7. Your Rights</h2>
+                <p>Depending on your location, you may have certain rights regarding your personal information:</p>
+                
+                <h3>7.1 Access and Correction</h3>
+                <p>You may request access to and correction of your personal information.</p>
+                
+                <h3>7.2 Data Portability</h3>
+                <p>You may request a copy of your personal data in a structured, commonly used format.</p>
+                
+                <h3>7.3 Deletion</h3>
+                <p>You may request deletion of your personal information under certain circumstances.</p>
+                
+                <h3>7.4 Restriction and Objection</h3>
+                <p>You may request restriction of processing or object to certain uses of your data.</p>
+                
+                <h3>7.5 Opt-Out</h3>
+                <p>You may opt out of marketing communications at any time by using the unsubscribe link in our emails or contacting us directly.</p>
+            </section>
+
+            <section id="children" class="legal-section">
+                <h2>8. Children's Privacy</h2>
+                <p>Our Service is not intended for children under 13. We do not knowingly collect personal information from children under 13. If we become aware that we have collected personal information from a child under 13, we will take steps to delete such information.</p>
+                
+                <h3>8.1 Parental Consent</h3>
+                <p>For users between 13-18 years old, we recommend obtaining parental consent before using our Service.</p>
+            </section>
+
+            <section id="changes" class="legal-section">
+                <h2>9. Policy Changes</h2>
+                <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date.</p>
+                
+                <h3>9.1 Material Changes</h3>
+                <p>For material changes, we will provide more prominent notice (including email notification of privacy policy changes for certain services).</p>
+            </section>
+
+            <section id="contact" class="legal-section">
+                <h2>10. Contact Us</h2>
+                <p>If you have any questions about this Privacy Policy, please contact us:</p>
+                <ul>
+                    <li>By email: <span class="highlight">privacy@animalsaveindia.org</span></li>
+                   
+                </ul>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-bg">
+            <div class="footer-bg-circle"></div>
+            <div class="footer-bg-circle"></div>
+        </div>
+        
+        <div class="footer-animation">
+            <div class="conveyor-belt">
+                <div class="animal-icon">🐄</div>
+                <div class="animal-icon">🐖</div>
+                <div class="animal-icon">🐓</div>
+                <div class="animal-icon">🐑</div>
+                <div class="animal-icon">🐟</div>
+                <div class="animal-icon">🐄</div>
+                <div class="animal-icon">🐖</div>
+                <div class="animal-icon">🐓</div>
+                <div class="animal-icon">🐑</div>
+                <div class="animal-icon">🐟</div>
+            </div>
+        </div>
+        
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="footer-logo">AnimalSaveIndia</div>
+                <p class="footer-description">Compassionate living for a kinder world. Join our movement to protect animals and promote veganism across India.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <div class="footer-links">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="/join.html#events">Events</a></li>
+                        <li><a href="#">Animal Rights</a></li>
+                        <li><a href="#">Recipes</a></li>
+                        <li><a href="/ourstory.html#documentary-section">Documentaries</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-col">
+                <div class="footer-links">
+                    <h3>Our Compassion's</h3>
+                    <ul>
+                        <li><a href="/index.html">Home</a></li>
+                        <li><a href="/OurStory.html">Our Story</a></li>
+                        <li><a href="/whygovegan.html">Why Go Vegan</a></li>
+                        <li><a href="/contacts.html">Contacts</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-col">
+                <div class="footer-links">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="/PrivacyPolicy.html">Privacy Policy</a></li>
+                        <li><a href="/TermsofService.html">Terms of Service</a></li>
+                        <li><a href="/contacts.html">Contact</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 AnimalSaveIndia. All rights reserved.</p>
+        </div>
+
+        <div class="made-with-love">
+            <span class="passion-text">Made with</span>
+            <span class="heart-icon">❤️</span>
+            <span class="passion-text">by ComputeratePiyush</span>
+        </div>
+        
+    </footer>
+    
+
+    <script>
+const _0x36d337=_0xd3d8;(function(_0x44127e,_0x3c3612){const _0x1e013e=_0xd3d8,_0x42af63=_0x44127e();while(!![]){try{const _0x4f7e16=-parseInt(_0x1e013e(0x1ee))/0x1*(-parseInt(_0x1e013e(0x1f5))/0x2)+parseInt(_0x1e013e(0x1e8))/0x3*(-parseInt(_0x1e013e(0x219))/0x4)+-parseInt(_0x1e013e(0x222))/0x5*(-parseInt(_0x1e013e(0x1e4))/0x6)+-parseInt(_0x1e013e(0x247))/0x7+-parseInt(_0x1e013e(0x214))/0x8*(parseInt(_0x1e013e(0x1ed))/0x9)+-parseInt(_0x1e013e(0x1f9))/0xa*(parseInt(_0x1e013e(0x22a))/0xb)+parseInt(_0x1e013e(0x1df))/0xc;if(_0x4f7e16===_0x3c3612)break;else _0x42af63['push'](_0x42af63['shift']());}catch(_0x3648ab){_0x42af63['push'](_0x42af63['shift']());}}}(_0x5a53,0xb51de));const loadingMessages=[_0x36d337(0x228),'the\x20planet',_0x36d337(0x1f6),_0x36d337(0x1ec),_0x36d337(0x212)],loadingScreen=document[_0x36d337(0x237)](_0x36d337(0x20e)),loadingMessage=document[_0x36d337(0x237)]('.loading-message'),changingText=document[_0x36d337(0x237)](_0x36d337(0x1f2)),loadingSpinner=document[_0x36d337(0x237)](_0x36d337(0x203)),loadingAnimals=document[_0x36d337(0x23d)]('.loading-animal'),navLinksList=document['querySelectorAll']('.nav-links\x20a'),buttons=document[_0x36d337(0x23d)](_0x36d337(0x21a)),legalSections=document['querySelectorAll']('.legal-section'),legalSidebarLinks=document[_0x36d337(0x23d)](_0x36d337(0x246)),indiaText=document[_0x36d337(0x237)](_0x36d337(0x1e3)),particlesContainer=document['getElementById'](_0x36d337(0x1f3)),conveyorBelt=document['querySelector'](_0x36d337(0x1de)),animalIcons=document[_0x36d337(0x23d)](_0x36d337(0x1eb));function showLoadingMessage(){const _0x297b04=_0x36d337;let _0x4801bc=0x0;const _0x32e158=()=>{const _0x51cf44=_0xd3d8;changingText[_0x51cf44(0x22c)][_0x51cf44(0x21d)]='0',setTimeout(()=>{const _0x374c7b=_0x51cf44;changingText[_0x374c7b(0x1fd)]=loadingMessages[_0x4801bc],changingText[_0x374c7b(0x22c)][_0x374c7b(0x21d)]='1',_0x4801bc=(_0x4801bc+0x1)%loadingMessages['length'];},0x1f4);};_0x32e158(),setInterval(_0x32e158,0xbb8);let _0x1eaf4c=0x0;const _0x50d04d=setInterval(()=>{const _0x1cb791=_0xd3d8;_0x1eaf4c+=0xa,loadingSpinner[_0x1cb791(0x22c)][_0x1cb791(0x1e9)]='rotate('+_0x1eaf4c+'deg)';const _0x278a6a=Math['abs'](Math['sin'](_0x1eaf4c*Math['PI']/0xb4))*0.5+0.5;loadingSpinner['style'][_0x1cb791(0x241)]='0\x200\x20'+_0x278a6a*0xf+_0x1cb791(0x23a)+_0x278a6a*0.5+')';},0x32);loadingAnimals[_0x297b04(0x218)]((_0x7050e4,_0x937a36)=>{const _0x56f5ae=_0x297b04;_0x7050e4[_0x56f5ae(0x22c)][_0x56f5ae(0x231)]=_0x937a36*0x2+'s',_0x7050e4['style']['animationDuration']=0xf+_0x937a36*0x3+'s',_0x7050e4[_0x56f5ae(0x22c)][_0x56f5ae(0x21d)]=_0x56f5ae(0x200);}),setTimeout(()=>{const _0x429a41=_0x297b04;loadingScreen[_0x429a41(0x22c)][_0x429a41(0x21d)]='0',loadingScreen[_0x429a41(0x22c)][_0x429a41(0x224)]=_0x429a41(0x240),setTimeout(()=>{const _0x5ba9bf=_0x429a41;loadingScreen[_0x5ba9bf(0x22c)][_0x5ba9bf(0x1e2)]=_0x5ba9bf(0x20b),clearInterval(_0x50d04d),initAnimations();},0x320);},0x3e8);}function animateIndiaFlag(){const _0x228fa7=_0x36d337;if(!indiaText)return;let _0x200966=0x0;const _0x37b35e=[_0x228fa7(0x244),_0x228fa7(0x226),_0x228fa7(0x1e5)];let _0x35169e=0x0;setInterval(()=>{const _0xe9268=_0x228fa7;_0x200966+=0.15;const _0x49c69f=Math[_0xe9268(0x236)](_0x200966)*0x8;indiaText[_0xe9268(0x22c)][_0xe9268(0x1e9)]=_0xe9268(0x245)+_0x49c69f+_0xe9268(0x215);if(_0x200966%(Math['PI']*0x2)<0.1){_0x35169e=(_0x35169e+0x1)%_0x37b35e[_0xe9268(0x20f)];const _0x5eb04c=(_0x35169e+0x1)%_0x37b35e[_0xe9268(0x20f)];indiaText[_0xe9268(0x22c)]['background']=_0xe9268(0x21f)+_0x37b35e[_0x35169e]+',\x20'+_0x37b35e[_0x5eb04c]+')',indiaText[_0xe9268(0x22c)][_0xe9268(0x220)]='text',indiaText['style'][_0xe9268(0x235)]=_0xe9268(0x20a);}},0x32);}function setupButtonEffects(){const _0x499346=_0x36d337;buttons[_0x499346(0x218)](_0x1d8226=>{const _0xc05f91=_0x499346;_0x1d8226[_0xc05f91(0x239)](_0xc05f91(0x23b),_0x509262=>{const _0x21a3f7=_0xc05f91,_0x485cc3=_0x1d8226['getBoundingClientRect'](),_0x4bd19f=_0x509262[_0x21a3f7(0x201)]-_0x485cc3[_0x21a3f7(0x230)],_0x566582=_0x509262[_0x21a3f7(0x243)]-_0x485cc3['top'],_0x3ade99=_0x485cc3[_0x21a3f7(0x242)]/0x2,_0xd7bf92=_0x485cc3['height']/0x2,_0x7dc351=(_0x4bd19f-_0x3ade99)/0x5,_0x4f7e35=(_0x566582-_0xd7bf92)/0x5;_0x1d8226[_0x21a3f7(0x22c)][_0x21a3f7(0x1e9)]=_0x21a3f7(0x207)+_0x7dc351+_0x21a3f7(0x1f1)+_0x4f7e35+_0x21a3f7(0x1e7);}),_0x1d8226['addEventListener'](_0xc05f91(0x23c),()=>{const _0x36c2d4=_0xc05f91;_0x1d8226[_0x36c2d4(0x22c)][_0x36c2d4(0x1e9)]='translate3d(0,\x200,\x200)';}),_0x1d8226[_0xc05f91(0x239)](_0xc05f91(0x1e6),function(_0x51cf60){const _0xba4509=_0xc05f91,_0x4f8238=_0x1d8226[_0xba4509(0x205)](),_0xc653b1=_0x51cf60[_0xba4509(0x201)]-_0x4f8238[_0xba4509(0x230)],_0x1722ae=_0x51cf60[_0xba4509(0x243)]-_0x4f8238['top'],_0x481281=document[_0xba4509(0x22b)](_0xba4509(0x23e));_0x481281[_0xba4509(0x232)]['add'](_0xba4509(0x20d)),_0x481281[_0xba4509(0x22c)]['left']=_0xc653b1+'px',_0x481281[_0xba4509(0x22c)]['top']=_0x1722ae+'px',this[_0xba4509(0x233)](_0x481281),setTimeout(()=>{_0x481281['remove']();},0x258);});});}function setupLegalNavigation(){const _0x293e74=_0x36d337,_0x2da41e=document[_0x293e74(0x23d)](_0x293e74(0x22d)),_0xa80b11=document[_0x293e74(0x23d)](_0x293e74(0x1e1));_0x2da41e['forEach'](_0x50d382=>{const _0x3e6386=_0x293e74;_0x50d382[_0x3e6386(0x239)](_0x3e6386(0x1e6),_0x235d59=>{const _0x14a301=_0x3e6386;_0x235d59[_0x14a301(0x1f0)]();const _0x2251a3=_0x50d382[_0x14a301(0x21c)](_0x14a301(0x225)),_0x3aa538=document[_0x14a301(0x237)](_0x2251a3);_0x3aa538&&(_0x2da41e[_0x14a301(0x218)](_0x2b3682=>_0x2b3682['classList'][_0x14a301(0x1ea)]('active')),_0x50d382[_0x14a301(0x232)]['add'](_0x14a301(0x229)),window[_0x14a301(0x238)]({'top':_0x3aa538[_0x14a301(0x204)]-0x64,'behavior':_0x14a301(0x22e)}),_0xa80b11[_0x14a301(0x218)](_0x32e5f1=>_0x32e5f1['classList']['remove'](_0x14a301(0x229))),_0x3aa538['classList'][_0x14a301(0x22f)]('active'));});}),window[_0x293e74(0x239)]('scroll',()=>{const _0x578860=_0x293e74;let _0x8854ab='';_0xa80b11[_0x578860(0x218)](_0x52b813=>{const _0x401470=_0x578860,_0x2ac182=_0x52b813[_0x401470(0x204)],_0x585432=_0x52b813[_0x401470(0x1fc)];window[_0x401470(0x21b)]>=_0x2ac182-0xc8&&window[_0x401470(0x21b)]<_0x2ac182+_0x585432-0xc8&&(_0x8854ab='#'+_0x52b813[_0x401470(0x21c)]('id'));}),_0x2da41e['forEach'](_0x5ab101=>{const _0x1cf86b=_0x578860;_0x5ab101[_0x1cf86b(0x232)][_0x1cf86b(0x1ea)](_0x1cf86b(0x229)),_0x5ab101[_0x1cf86b(0x21c)](_0x1cf86b(0x225))===_0x8854ab&&_0x5ab101['classList']['add']('active');});});}function _0xd3d8(_0x3301ad,_0xdd918){const _0x5a53e1=_0x5a53();return _0xd3d8=function(_0xd3d899,_0x10b1e2){_0xd3d899=_0xd3d899-0x1dd;let _0x70df0=_0x5a53e1[_0xd3d899];return _0x70df0;},_0xd3d8(_0x3301ad,_0xdd918);}function _0x5a53(){const _0x275405=['classList','appendChild','undefined','backgroundClip','sin','querySelector','scrollTo','addEventListener','px\x20rgba(92,\x20204,\x2096,\x20','mousemove','mouseleave','querySelectorAll','span','key','blur(20px)','boxShadow','width','clientY','#FF9933','translateY(','.legal-sidebar-link','225834YCRkvR','ctrlKey','canvas','.mobile-menu-btn','.conveyor-belt','19748880wEIazA','observe','.legal-section','display','.india','36GOMmOi','#138808','click','px,\x200)','6gSdNka','transform','remove','.animal-icon','all\x20beings','1240047Xwccpz','18145cTJNuY','matches','preventDefault','px,\x20','.changing-text','particles-js','out','52ydblNB','future\x20generations','toggle','#5CCC60','21540ACDmgF','(max-width:\x20768px)','scale(1.2)\x20rotate(10deg)','clientHeight','textContent','push','hide-nav','0.3','clientX','target','.loading-spinner','offsetTop','getBoundingClientRect','mouseenter','translate3d(','repulse','contextmenu','text','none','scrolling','ripple-effect','.loading-screen','length','section','animation','compassion','onkeydown','48jDWqBM','px)','.nav-links\x20a','isIntersecting','forEach','1224372dMslLN','.btn','scrollY','getAttribute','opacity','circle','linear-gradient(to\x20right,\x20','webkitBackgroundClip','.nav-links','390110OfyzHe','DOMContentLoaded','backdropFilter','href','#FFFFFF','matchMedia','animals','active','1903KWNuOW','createElement','style','.legal-sidebar\x20a','smooth','add','left','animationDelay'];_0x5a53=function(){return _0x275405;};return _0x5a53();}function setupSectionReveal(){const _0x4fa98d=_0x36d337,_0x393545=new IntersectionObserver(_0x4c9b87=>{_0x4c9b87['forEach'](_0x4425c9=>{const _0x1c9136=_0xd3d8;_0x4425c9[_0x1c9136(0x217)]&&_0x4425c9[_0x1c9136(0x202)]['classList'][_0x1c9136(0x22f)](_0x1c9136(0x229));});},{'threshold':0.1});legalSections[_0x4fa98d(0x218)](_0x4e5ddb=>{const _0x517628=_0x4fa98d;_0x393545[_0x517628(0x1e0)](_0x4e5ddb);});}function initParticles(){const _0xea4eb3=_0x36d337;typeof particlesJS!==_0xea4eb3(0x234)&&particlesJS(_0xea4eb3(0x1f3),{'particles':{'number':{'value':0x50},'color':{'value':_0xea4eb3(0x1f8)},'shape':{'type':_0xea4eb3(0x21e)},'opacity':{'value':0.5,'random':!![]},'size':{'value':0x3,'random':!![]},'line_linked':{'enable':!![],'distance':0x96,'color':'#5CCC60','opacity':0.3,'width':0x1},'move':{'enable':!![],'speed':0x2,'direction':_0xea4eb3(0x20b),'random':!![],'straight':![],'out_mode':_0xea4eb3(0x1f4),'bounce':![]}},'interactivity':{'detect_on':_0xea4eb3(0x249),'events':{'onhover':{'enable':!![],'mode':_0xea4eb3(0x208)},'onclick':{'enable':!![],'mode':_0xea4eb3(0x1fe)}}}});}function setupFooterAnimation(){const _0x27d2f8=_0x36d337;if(!conveyorBelt)return;animalIcons[_0x27d2f8(0x218)](_0x1a05d3=>{const _0xd83674=_0x27d2f8;_0x1a05d3[_0xd83674(0x239)](_0xd83674(0x206),()=>{const _0x1e2d93=_0xd83674;_0x1a05d3['style'][_0x1e2d93(0x1e9)]=_0x1e2d93(0x1fb),_0x1a05d3['style'][_0x1e2d93(0x211)]=_0x1e2d93(0x20b);}),_0x1a05d3[_0xd83674(0x239)](_0xd83674(0x23c),()=>{const _0x3f3eed=_0xd83674;_0x1a05d3['style']['transform']='',_0x1a05d3[_0x3f3eed(0x22c)][_0x3f3eed(0x211)]='floatIcon\x205s\x20ease-in-out\x20infinite';});});}function initAnimations(){animateIndiaFlag(),setupButtonEffects(),setupLegalNavigation(),setupSectionReveal(),setupFooterAnimation(),initParticles();}document[_0x36d337(0x239)](_0x36d337(0x223),()=>{showLoadingMessage();});let lastScroll=0x0;const navbar=document[_0x36d337(0x237)]('.glass-nav'),mobileMenuBtn=document['querySelector'](_0x36d337(0x1dd)),navLinks=document[_0x36d337(0x237)](_0x36d337(0x221)),navItems=document[_0x36d337(0x23d)](_0x36d337(0x216)),isMobile=window[_0x36d337(0x227)](_0x36d337(0x1fa))[_0x36d337(0x1ef)];mobileMenuBtn[_0x36d337(0x239)](_0x36d337(0x1e6),()=>{const _0x1cbc7d=_0x36d337;mobileMenuBtn['classList'][_0x1cbc7d(0x1f7)](_0x1cbc7d(0x229)),navLinks[_0x1cbc7d(0x232)][_0x1cbc7d(0x1f7)](_0x1cbc7d(0x229));}),navItems[_0x36d337(0x218)](_0x3dec07=>{const _0x5f7a1b=_0x36d337;_0x3dec07[_0x5f7a1b(0x239)](_0x5f7a1b(0x1e6),()=>{const _0x1d4cbe=_0x5f7a1b;isMobile&&(mobileMenuBtn[_0x1d4cbe(0x232)][_0x1d4cbe(0x1ea)](_0x1d4cbe(0x229)),navLinks[_0x1d4cbe(0x232)][_0x1d4cbe(0x1ea)](_0x1d4cbe(0x229)));});}),window[_0x36d337(0x239)]('scroll',()=>{const _0x1b2c77=_0x36d337,_0x1f503c=window['pageYOffset'];if(isMobile)_0x1f503c<=0x0?navbar[_0x1b2c77(0x232)][_0x1b2c77(0x1ea)](_0x1b2c77(0x20c)):navbar['classList'][_0x1b2c77(0x22f)](_0x1b2c77(0x20c));else{if(_0x1f503c<=0x0)navbar['classList'][_0x1b2c77(0x1ea)]('hide-nav');else{if(_0x1f503c>lastScroll&&!navbar[_0x1b2c77(0x232)]['contains'](_0x1b2c77(0x1ff)))navbar['classList'][_0x1b2c77(0x22f)](_0x1b2c77(0x1ff));else _0x1f503c<lastScroll&&navbar[_0x1b2c77(0x232)]['contains'](_0x1b2c77(0x1ff))&&navbar[_0x1b2c77(0x232)][_0x1b2c77(0x1ea)](_0x1b2c77(0x1ff));}}lastScroll=_0x1f503c;const _0x423bee=document[_0x1b2c77(0x23d)](_0x1b2c77(0x210));let _0xc8475a='';_0x423bee[_0x1b2c77(0x218)](_0x1f9147=>{const _0x1b7d7f=_0x1b2c77,_0x580b6f=_0x1f9147[_0x1b7d7f(0x204)],_0x3dce83=_0x1f9147[_0x1b7d7f(0x1fc)];pageYOffset>=_0x580b6f-0x12c&&(_0xc8475a=_0x1f9147[_0x1b7d7f(0x21c)]('id'));}),navItems['forEach'](_0x46bd0b=>{const _0x5de14d=_0x1b2c77;_0x46bd0b[_0x5de14d(0x232)]['remove'](_0x5de14d(0x229)),_0x46bd0b[_0x5de14d(0x21c)](_0x5de14d(0x225))==='#'+_0xc8475a&&_0x46bd0b[_0x5de14d(0x232)][_0x5de14d(0x22f)](_0x5de14d(0x229));});}),document[_0x36d337(0x239)](_0x36d337(0x209),_0x56ab74=>_0x56ab74[_0x36d337(0x1f0)]()),document[_0x36d337(0x213)]=function(_0x1bf41d){const _0x570089=_0x36d337;if(_0x1bf41d[_0x570089(0x248)]&&(_0x1bf41d[_0x570089(0x23f)]==='u'||_0x1bf41d[_0x570089(0x23f)]==='s'||_0x1bf41d[_0x570089(0x23f)]==='i'||_0x1bf41d['key']==='j'))return![];};
+
+    </script>
+</body>
+</html>

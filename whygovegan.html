@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why Go Vegan | AnimalSaveIndia</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #5CCC60;
+            --primary-light: rgba(92, 204, 96, 0.2);
+            --secondary: #8BC34A;
+            --accent: #AED581;
+            --dark: #121212;
+            --darker: #0A0A0A;
+            --light: #FFFFFF;
+            --gray: #9E9E9E;
+            --light-gray: rgba(255, 255, 255, 0.1);
+            --glass: rgba(30, 30, 30, 0.6);
+            --border-radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --flag-orange: #FF9933;
+            --flag-white: #FFFFFF;
+            --flag-green: #138808;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+            overflow-x: hidden;
+        }
+
+        .glass-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: var(--glass);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--light-gray);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .nav-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-animate {
+            position: relative;
+        }
+
+        .logo-animate .india {
+            background: linear-gradient(to right, var(--flag-orange), var(--flag-white), var(--flag-green));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            display: inline-block;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            position: relative;
+            padding: 8px 0;
+            color: var(--light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+
+
+
+
+        .nav-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.glass-nav {
+    transition: transform 0.3s ease;
+}
+
+/* Desktop Navigation */
+@media (min-width: 769px) {
+    .glass-nav.hide-nav {
+        transform: translateY(-100%);
+    }
+    
+    .nav-links {
+        display: flex;
+        gap: 30px;
+        margin: 0 auto;
+    }
+    
+    .mobile-menu-btn,
+    .mobile-join-btn {
+        display: none;
+    }
+    
+    .desktop-join-btn {
+        margin-left: auto;
+    }
+}
+
+/* Mobile Navigation */
+@media (max-width: 768px) {
+    .glass-nav.scrolling {
+        transform: translateY(-100%);
+    }
+    
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 300px;
+        height: 100vh;
+        background: var(--darker);
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 100px 30px 30px;
+        gap: 25px;
+        transition: right 0.3s ease;
+        z-index: 90;
+        border-left: 1px solid var(--light-gray);
+    }
+    
+    .nav-links.active {
+        right: 0;
+    }
+    
+    .desktop-join-btn {
+        display: none;
+    }
+    
+    .mobile-menu-btn {
+        display: flex;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.8rem;
+        cursor: pointer;
+        margin-left: auto;
+        z-index: 100;
+        padding: 10px;
+    }
+    
+    .mobile-menu-btn .close-icon {
+        display: none;
+    }
+    
+    .mobile-menu-btn.active .close-icon {
+        display: block;
+    }
+    
+    .mobile-menu-btn.active .menu-icon {
+        display: none;
+    }
+    
+    .mobile-join-btn {
+        margin-top: 30px;
+        width: 100%;
+    }
+}
+
+/* Active nav link highlighting */
+.nav-links a.active {
+    color: var(--primary);
+}
+
+.nav-links a.active::after {
+    width: 100%;
+}
+
+
+        /* Buttons */
+        .btn {
+            position: relative;
+            overflow: hidden;
+            border: none;
+            padding: 16px 36px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            z-index: 1;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transform-style: preserve-3d;
+            perspective: 500px;
+            will-change: transform;
+        }
+
+        .primary-btn {
+            background: linear-gradient(135deg, var(--primary), #4ab84e);
+            color: white;
+            box-shadow: 0 8px 20px rgba(92, 204, 96, 0.3);
+            border: none;
+            position: relative;
+        }
+
+        .primary-btn::after {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 50px;
+            background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
+            background-size: 200% 100%;
+            z-index: -2;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .primary-btn:hover::after {
+            opacity: 1;
+            animation: shine-border 4s linear infinite;
+        }
+
+        .primary-btn::before {
+            content: '';
+            position: absolute;
+            inset: 1px;
+            border-radius: 50px;
+            background: linear-gradient(135deg, var(--primary), #4ab84e);
+            z-index: -1;
+            transition: all 0.4s ease;
+        }
+
+        @keyframes shine-border {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
+        /* Hero Section */
+        .vegan-hero {
+            padding: 150px 5% 100px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vegan-hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+            background: linear-gradient(to right, #fff, var(--primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .vegan-hero p {
+            color: var(--gray);
+            font-size: 1.4rem;
+            max-width: 800px;
+            line-height: 1.7;
+        }
+
+        /* Step Progress Indicator */
+        .step-progress {
+            position: fixed;
+            left: 50px;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 60vh;
+            width: 2px;
+            background: var(--light-gray);
+            z-index: 10;
+        }
+
+        .step-progress-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0%;
+            background: var(--primary);
+            transition: height 0.5s ease;
+        }
+
+        .step-marker {
+            position: absolute;
+            left: -15px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--dark);
+            border: 2px solid var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .step-marker.active {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: scale(1.1);
+        }
+
+        /* Problem Steps Styling */
+        .problem-step {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 80px 5% 80px 150px;
+            position: relative;
+            gap: 60px;
+        }
+
+        .step-content {
+            flex: 1;
+            padding-right: 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-image {
+            flex: 1;
+            height: 465px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .image-container {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .step-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .cruelty-list {
+            list-style: none;
+            margin: 30px 0;
+        }
+
+        .cruelty-list li {
+            padding: 15px 0;
+            border-bottom: 1px solid var(--light-gray);
+            font-size: 1.1rem;
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: all 0.6s ease;
+        }
+
+        .cruelty-list li:nth-child(1) { transition-delay: 0.1s; }
+        .cruelty-list li:nth-child(2) { transition-delay: 0.2s; }
+        .cruelty-list li:nth-child(3) { transition-delay: 0.3s; }
+
+        .problem-step.active .cruelty-list li {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Section Header */
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #fff 0%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+        }
+
+        .section-header p {
+            color: var(--gray);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .problem-step h3 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #fff 0%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Solution Section */
+        .solution-section {
+            padding: 150px 5%;
+            text-align: center;
+        }
+
+        .solution-steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            max-width: 1200px;
+            margin: 80px auto;
+        }
+
+        .solution-card {
+            background: var(--glass);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            border: 1px solid var(--light-gray);
+            transition: var(--transition);
+        }
+
+        .solution-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(92, 204, 96, 0.2);
+        }
+
+        .solution-icon {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease-out;
+}
+
+.solution-card.active .solution-icon {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+        .solution-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .solution-card p {
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        /* Step Stats */
+        .step-stat {
+            margin-top: 30px;
+            padding: 20px;
+            background: var(--glass);
+            border-radius: var(--border-radius);
+            border: 1px solid var(--light-gray);
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: var(--gray);
+            font-size: 1rem;
+        }
+
+        /* Step Quote */
+        .step-quote {
+            margin-top: 30px;
+            padding: 20px;
+            border-left: 3px solid var(--primary);
+            background: var(--glass);
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .step-quote blockquote {
+            font-style: italic;
+            color: var(--light);
+            line-height: 1.6;
+        }
+
+        /* Final CTA Section */
+        .cta-section {
+            padding: 150px 5%;
+            text-align: center;
+            background: linear-gradient(135deg, var(--darker), var(--dark));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        /* Footer Styles */
+        .footer {
+            padding: 100px 5% 60px;
+            background: var(--darker);
+            border-top: 1px solid var(--light-gray);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.05;
+        }
+
+        .footer-bg-circle {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+        }
+
+        .footer-bg-circle:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            background: var(--primary);
+            top: 30%;
+            left: 20%;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        .footer-bg-circle:nth-child(2) {
+            width: 400px;
+            height: 400px;
+            background: var(--secondary);
+            bottom: 20%;
+            right: 15%;
+            animation: float 10s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(5deg); }
+        }
+
+        /* Footer Animation - Conveyor Belt */
+        .footer-animation {
+            height: 120px;
+            width: 100%;
+            position: relative;
+            margin-bottom: 50px;
+            overflow: hidden;
+        }
+
+        .conveyor-belt {
+            display: flex;
+            position: absolute;
+            animation: scrollBelt 30s linear infinite;
+        }
+
+        .animal-icon {
+            font-size: 3rem;
+            margin: 0 40px;
+            transition: all 0.3s ease;
+            position: relative;
+            animation: floatIcon 5s ease-in-out infinite;
+        }
+
+        @keyframes scrollBelt {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        @keyframes floatIcon {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 50px;
+            max-width: 1200px;
+            margin: 0 auto 80px;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            display: inline-block;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .footer-description {
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--glass);
+            border: 1px solid var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light);
+            transition: var(--transition);
+            font-size: 1.2rem;
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 20px rgba(92, 204, 96, 0.3);
+        }
+
+        .footer-links h3 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            color: var(--light);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+            font-size: 1.1rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 60px;
+            border-top: 1px solid var(--light-gray);
+            color: var(--gray);
+            font-size: 1rem;
+        }
+
+        /* Made with Passion Section */
+        .made-with-love {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 30px 0;
+            font-size: 1.1rem;
+            color: var(--gray);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .heart-icon {
+            margin: 0 8px;
+            font-size: 1.3rem;
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: pulse 2s infinite;
+        }
+
+        .passion-text {
+            position: relative;
+            display: inline-block;
+        }
+
+        .passion-text:first-child::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, var(--primary), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .made-with-love:hover .passion-text:first-child::after {
+            transform: translateX(0);
+        }
+
+        .passion-text:last-child::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            right: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary));
+            transform: translateX(100%);
+            transition: transform 0.6s ease;
+        }
+
+        .made-with-love:hover .passion-text:last-child::before {
+            transform: translateX(0);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.8; }
+        }
+
+        /* Loading Screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--darker);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .loading-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .loading-background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, var(--primary-light) 0%, transparent 30%),
+                radial-gradient(circle at 80% 70%, rgba(139, 195, 74, 0.2) 0%, transparent 30%);
+            opacity: 0.3;
+            animation: pulse 8s infinite alternate;
+        }
+
+        .loading-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .loading-message {
+            font-size: 2rem;
+            margin-bottom: 40px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+        }
+
+        .loading-message::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--primary));
+            background-size: 200% 100%;
+            border-radius: 2px;
+            animation: shine-border 4s linear infinite;
+        }
+
+        .loading-spinner {
+            width: 70px;
+            height: 70px;
+            border: 5px solid var(--light-gray);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            position: relative;
+            animation: spin 1.5s linear infinite;
+        }
+
+        .loading-spinner::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 5px solid transparent;
+            border-radius: 50%;
+            border-bottom-color: var(--secondary);
+            animation: spinReverse 2s linear infinite;
+        }
+
+        .loading-animals {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .loading-animal {
+            position: absolute;
+            font-size: 3rem;
+            opacity: 0;
+            animation: floatAnimal 15s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes spinReverse {
+            to { transform: rotate(-360deg); }
+        }
+
+        @keyframes floatAnimal {
+            0% { transform: translateY(100vh) translateX(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.3; }
+            90% { opacity: 0.3; }
+            100% { transform: translateY(-100px) translateX(100px) rotate(360deg); opacity: 0; }
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+            z-index: 100;
+        }
+
+        .mobile-menu-btn .close-icon {
+            display: none;
+        }
+
+        .mobile-menu-btn.active .close-icon {
+            display: block;
+        }
+
+        .mobile-menu-btn.active .menu-icon {
+            display: none;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 1024px) {
+            .problem-step {
+                padding-left: 100px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .glass-nav {
+                padding: 15px 5%;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: 100vh;
+                background: var(--darker);
+                flex-direction: column;
+                justify-content: flex-start;
+                padding: 100px 30px 30px;
+                gap: 25px;
+                transition: right 0.3s ease;
+                z-index: 90;
+                border-left: 1px solid var(--light-gray);
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .mobile-menu-btn {
+                display: flex;
+                margin-left: auto;
+            }
+            
+            .vegan-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .vegan-hero p {
+                font-size: 1.1rem;
+            }
+            
+            .problem-step {
+                flex-direction: column;
+                padding: 60px 5%;
+                gap: 30px;
+            }
+            
+            .step-content {
+                padding-right: 0;
+            }
+            
+            .step-image {
+                height: 400px;
+                width: 100%;
+            }
+            
+            .solution-steps {
+                grid-template-columns: 1fr;
+            }
+            
+            .step-progress {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .vegan-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .footer-animation {
+                height: 80px;
+            }
+            
+            .animal-icon {
+                font-size: 2rem;
+                margin: 0 20px;
+            }
+        }
+
+
+
+
+
+
+        
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+}
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+        <div class="loading-container">
+            <div class="loading-background"></div>
+            <div class="loading-animals">
+                <div class="loading-animal" style="left: 10%; animation-delay: 0s;">🐄</div>
+                <div class="loading-animal" style="left: 30%; animation-delay: 2s;">🐖</div>
+                <div class="loading-animal" style="left: 50%; animation-delay: 4s;">🐓</div>
+                <div class="loading-animal" style="left: 70%; animation-delay: 6s;">🐑</div>
+                <div class="loading-animal" style="left: 90%; animation-delay: 8s;">🐟</div>
+            </div>
+            <div class="loading-content">
+                <div class="loading-message">Building a kinder world for <span class="changing-text">animals</span></div>
+                <div class="loading-spinner"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="glass-nav">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <span class="logo-animate">AnimalSave<span class="india">India</span></span>
+            </a>
+            
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars menu-icon"></i>
+                <i class="fas fa-times close-icon"></i>
+            </button>
+            
+            <div class="nav-links">
+                <a href="/index.html">Home</a>
+                <a href="/OurStory.html">Our Story</a>
+                <a href="/whygovegan.html" class="active">Why Go Vegan</a>
+                <a href="/contacts.html">Contact</a>
+                <button class="btn primary-btn mobile-join-btn" onclick="window.location.href='/join.html'">
+                    <span class="btn-text">Join Us Now</span>
+                </button>
+            </div>
+            
+            <div class="desktop-join-btn">
+                <button class="btn primary-btn" onclick="window.location.href='/join.html'" >
+                    <span class="btn-text">Join Us Now</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+
+    <!-- Hero Section -->
+    <section class="vegan-hero">
+        <div class="intro-block">
+            <div class="intro-tag">Compassion Starts Here</div>
+        </div>
+        <h1>Why Go Vegan?</h1>
+        <p class="hero-subheading">Every meal is a choice between compassion and cruelty. Discover how plant-based living saves animals, protects the planet, and improves your health.</p>
+    </section>
+
+    <!-- The Problem Section -->
+    <section class="problem-section" id="problemSection">
+        <div class="section-header">
+            <h2>The Problem</h2>
+            <p>Animal agriculture causes unimaginable suffering to billions of beings</p>
+        </div>
+        
+        <!-- Problem Steps -->
+        <div class="problem-steps">
+            <!-- Step 1 - Meat Industry -->
+            <div class="problem-step" id="step1">
+                <div class="step-content">
+                    <div class="step-header">
+                        <div class="step-number">01</div>
+                        <h3>Endless Cycle of Suffering</h3>
+                    </div>
+                    <div class="step-body">
+                        <p>Animals in meat production:</p>
+                        <ul class="cruelty-list">
+                            <li>🐄 Separated from mothers hours after birth</li>
+                            <li>🐓 Confined in spaces smaller than iPad</li>
+                            <li>🐖 Subjected to painful mutilations</li>
+                        </ul>
+                        <div class="step-stat">
+                            <div class="stat-number">72<i class="fas fa-percent"></i></div>
+                            <div class="stat-label">of global livestock in factory farms</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="step-image">
+                    <div class="image-container" style="background-image: url('/Step1\(Meat\).png');"></div>
+                </div>
+            </div>
+
+            <!-- Step 2 - Dairy Industry -->
+            <div class="problem-step" id="step2">
+                <div class="step-content">
+                    <div class="step-header">
+                        <div class="step-number">02</div>
+                        <h3>The Dairy Deception</h3>
+                    </div>
+                    <div class="step-body">
+                        <p>The cruel reality behind milk production:</p>
+                        <ul class="cruelty-list">
+                            <li>🐄 Forced impregnation every year</li>
+                            <li>👶 Calves separated within 24 hours</li>
+                            <li>💔 Mothers cry for days after separation</li>
+                        </ul>
+                        <div class="step-quote">
+                            <blockquote>
+                                "Dairy is meat industry in disguise - 
+                                every milk product supports veal production"
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+                <div class="step-image">
+                    <div class="image-container" style="background-image: url('/Step2\(dairy\).png');"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="solution-section" id="solutions">
+        <div class="section-header">
+            <h2>The Compassionate Solution</h2>
+            <p>Three simple steps to end animal suffering</p>
+        </div>
+        
+        <div class="solution-steps">
+            <!-- Solution Step 1 -->
+            <div class="solution-card">
+                <div class="solution-icon">🌱</div>
+                <h3>1. Educate Yourself</h3>
+                <p>Watch documentaries and understand the reality of animal agriculture</p>
+            </div>
+            
+            <!-- Solution Step 2 -->
+            <div class="solution-card">
+                <div class="solution-icon">🍛</div>
+                <h3>2. Vegan Alternatives</h3>
+                <p>Replace animal products with plant-based options available in Indian markets</p>
+            </div>
+            
+            <!-- Solution Step 3 -->
+            <div class="solution-card">
+                <div class="solution-icon">❤️</div>
+                <h3>3. Spread Awareness</h3>
+                <p>Share your journey and inspire others to make compassionate choices</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="cta-section">
+        <div class="cta-container">
+            <h2>Ready to Make the Change?</h2>
+            <p>Join thousands of Indians who've embraced compassionate living</p>
+            <div class="cta-buttons">
+                <button class="btn primary-btn" onclick="window.location.href='/join.html'">
+                    <span class="btn-text">Start Your Vegan Journey</span>
+                </button>
+                <button class="btn secondary-btn" onclick="window.location.href='/contacts.html'">
+                    <span class="btn-text">Have Questions? Contact Us</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-bg">
+            <div class="footer-bg-circle"></div>
+            <div class="footer-bg-circle"></div>
+        </div>
+        
+        <div class="footer-animation">
+            <div class="conveyor-belt">
+                <div class="animal-icon">🐄</div>
+                <div class="animal-icon">🐖</div>
+                <div class="animal-icon">🐓</div>
+                <div class="animal-icon">🐑</div>
+                <div class="animal-icon">🐟</div>
+                <div class="animal-icon">🐄</div>
+                <div class="animal-icon">🐖</div>
+                <div class="animal-icon">🐓</div>
+                <div class="animal-icon">🐑</div>
+                <div class="animal-icon">🐟</div>
+            </div>
+        </div>
+        
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="footer-logo">AnimalSaveIndia</div>
+                <p class="footer-description">Compassionate living for a kinder world. Join our movement to protect animals and promote veganism across India.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <div class="footer-links">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="/join.html#events">Events</a></li>
+                        <li><a href="#">Animal Rights</a></li>
+                        <li><a href="#">Recipes</a></li>
+                        <li><a href="/ourstory.html#documentary-section">Documentaries</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-col">
+                <div class="footer-links">
+                    <h3>Our Compassion's</h3>
+                    <ul>
+                        <li><a href="/index.html">Home</a></li>
+                        <li><a href="/OurStory.html">Our Story</a></li>
+                        <li><a href="/whygovegan.html">Why Go Vegan</a></li>
+                        <li><a href="/contacts.html">Contacts</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-col">
+                <div class="footer-links">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="/PrivacyPolicy.html">Privacy Policy</a></li>
+                        <li><a href="/TermsofService.html">Terms of Service</a></li>
+                        <li><a href="/contacts.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 AnimalSaveIndia. All rights reserved.</p>
+        </div>
+
+        <div class="made-with-love">
+            <span class="passion-text">Made with</span>
+            <span class="heart-icon">❤️</span>
+            <span class="passion-text">by ComputeratePiyush</span>
+        </div>
+    </footer>
+
+    <script>
+function _0x3ba6(_0x5db882,_0x551e55){const _0x1d74e2=_0x1d74();return _0x3ba6=function(_0x3ba630,_0x3b8f8f){_0x3ba630=_0x3ba630-0x115;let _0x4f4f58=_0x1d74e2[_0x3ba630];return _0x4f4f58;},_0x3ba6(_0x5db882,_0x551e55);}const _0x5372a5=_0x3ba6;(function(_0xe1aa00,_0x136bda){const _0x5c73aa=_0x3ba6,_0x59e03a=_0xe1aa00();while(!![]){try{const _0x252c49=-parseInt(_0x5c73aa(0x173))/0x1*(-parseInt(_0x5c73aa(0x122))/0x2)+-parseInt(_0x5c73aa(0x11b))/0x3+parseInt(_0x5c73aa(0x15e))/0x4*(parseInt(_0x5c73aa(0x158))/0x5)+parseInt(_0x5c73aa(0x138))/0x6*(-parseInt(_0x5c73aa(0x13a))/0x7)+parseInt(_0x5c73aa(0x172))/0x8+parseInt(_0x5c73aa(0x14a))/0x9+-parseInt(_0x5c73aa(0x12c))/0xa;if(_0x252c49===_0x136bda)break;else _0x59e03a['push'](_0x59e03a['shift']());}catch(_0x3986d1){_0x59e03a['push'](_0x59e03a['shift']());}}}(_0x1d74,0x96d99),document[_0x5372a5(0x126)](_0x5372a5(0x12a),function(){const _0x2c04f6=_0x5372a5,_0x591329=['animals',_0x2c04f6(0x150),'all\x20beings',_0x2c04f6(0x148),'future\x20generations'],_0x39c919=document[_0x2c04f6(0x119)](_0x2c04f6(0x12b)),_0x3b15fd=document['querySelector']('.changing-text'),_0x20ee81=document[_0x2c04f6(0x119)]('.loading-spinner');function _0xfb2a5f(){let _0x166303=0x0;const _0x4fe4f5=()=>{const _0x379e81=_0x3ba6;_0x3b15fd[_0x379e81(0x169)][_0x379e81(0x128)]='0',setTimeout(()=>{const _0x284aab=_0x379e81;_0x3b15fd['textContent']=_0x591329[_0x166303],_0x3b15fd[_0x284aab(0x169)][_0x284aab(0x128)]='1',_0x166303=(_0x166303+0x1)%_0x591329[_0x284aab(0x135)];},0x1f4);};_0x4fe4f5(),setInterval(_0x4fe4f5,0xbb8);let _0x2049a8=0x0;const _0xad7b51=setInterval(()=>{const _0x369f12=_0x3ba6;_0x2049a8+=0xa,_0x20ee81[_0x369f12(0x169)]['transform']='rotate('+_0x2049a8+'deg)';const _0x55cce9=Math[_0x369f12(0x137)](Math[_0x369f12(0x12e)](_0x2049a8*Math['PI']/0xb4))*0.5+0.5;_0x20ee81['style'][_0x369f12(0x14b)]=_0x369f12(0x15d)+_0x55cce9*0xf+_0x369f12(0x11f)+_0x55cce9*0.5+')';},0x32);setTimeout(()=>{const _0x8468cc=_0x3ba6;_0x39c919[_0x8468cc(0x169)]['opacity']='0',_0x39c919[_0x8468cc(0x169)]['backdropFilter']='blur(20px)',setTimeout(()=>{const _0x275479=_0x8468cc;_0x39c919['style'][_0x275479(0x16c)]=_0x275479(0x14e),clearInterval(_0xad7b51),_0x123518();},0x320);},0x7d0);}function _0x3d71ea(){const _0x79b520=_0x2c04f6,_0x38c2eb=document[_0x79b520(0x119)](_0x79b520(0x171));if(!_0x38c2eb)return;let _0x19c834=0x0;const _0x4bc3a7=[_0x79b520(0x140),'#FFFFFF','#138808'];let _0x537268=0x0;setInterval(()=>{const _0x2fc2=_0x79b520;_0x19c834+=0.15;const _0x3fa1e6=Math[_0x2fc2(0x12e)](_0x19c834)*0x8;_0x38c2eb[_0x2fc2(0x169)][_0x2fc2(0x16b)]=_0x2fc2(0x11a)+_0x3fa1e6+_0x2fc2(0x153);if(_0x19c834%(Math['PI']*0x2)<0.1){_0x537268=(_0x537268+0x1)%_0x4bc3a7['length'];const _0x55258e=(_0x537268+0x1)%_0x4bc3a7[_0x2fc2(0x135)];_0x38c2eb[_0x2fc2(0x169)]['background']=_0x2fc2(0x16d)+_0x4bc3a7[_0x537268]+',\x20'+_0x4bc3a7[_0x55258e]+')',_0x38c2eb[_0x2fc2(0x169)][_0x2fc2(0x156)]='text',_0x38c2eb[_0x2fc2(0x169)]['backgroundClip']=_0x2fc2(0x157);}},0x32);}function _0xec13df(){const _0x4a65db=_0x2c04f6,_0x5ef1a0=document[_0x4a65db(0x151)](_0x4a65db(0x142));_0x5ef1a0['forEach'](_0x203445=>{const _0x5f15cd=_0x4a65db;_0x203445[_0x5f15cd(0x126)]('mousemove',_0x1f4537=>{const _0x41e032=_0x5f15cd,_0x39be7b=_0x203445[_0x41e032(0x116)](),_0x47d7ed=_0x1f4537['clientX']-_0x39be7b['left'],_0x534c89=_0x1f4537[_0x41e032(0x14d)]-_0x39be7b[_0x41e032(0x125)],_0x5edaf9=_0x39be7b[_0x41e032(0x144)]/0x2,_0x504d1e=_0x39be7b[_0x41e032(0x118)]/0x2,_0x115441=(_0x47d7ed-_0x5edaf9)/0x5,_0x4c9350=(_0x534c89-_0x504d1e)/0x5;_0x203445[_0x41e032(0x169)][_0x41e032(0x16b)]=_0x41e032(0x14f)+_0x115441+_0x41e032(0x11e)+_0x4c9350+'px,\x200)';}),_0x203445[_0x5f15cd(0x126)](_0x5f15cd(0x117),()=>{const _0xbdee7b=_0x5f15cd;_0x203445[_0xbdee7b(0x169)][_0xbdee7b(0x16b)]=_0xbdee7b(0x132);}),_0x203445[_0x5f15cd(0x126)](_0x5f15cd(0x129),function(_0x4feada){const _0x365cfa=_0x5f15cd,_0x441aef=_0x203445[_0x365cfa(0x116)](),_0x39444e=_0x4feada[_0x365cfa(0x13f)]-_0x441aef[_0x365cfa(0x124)],_0x46ef6c=_0x4feada[_0x365cfa(0x14d)]-_0x441aef[_0x365cfa(0x125)],_0x5eea62=document[_0x365cfa(0x16e)](_0x365cfa(0x121));_0x5eea62[_0x365cfa(0x15f)][_0x365cfa(0x139)](_0x365cfa(0x115)),_0x5eea62[_0x365cfa(0x169)][_0x365cfa(0x124)]=_0x39444e+'px',_0x5eea62[_0x365cfa(0x169)]['top']=_0x46ef6c+'px',this[_0x365cfa(0x154)](_0x5eea62),setTimeout(()=>{const _0x15ddb9=_0x365cfa;_0x5eea62[_0x15ddb9(0x13d)]();},0x258);});});}function _0x831ae9(){const _0x8de6e2=_0x2c04f6,_0x516f0e=document[_0x8de6e2(0x119)](_0x8de6e2(0x161)),_0x4c2a7d=document[_0x8de6e2(0x119)]('.nav-links');if(!_0x516f0e||!_0x4c2a7d)return;_0x516f0e[_0x8de6e2(0x126)](_0x8de6e2(0x129),function(_0x55c68a){const _0x4a01d9=_0x8de6e2;_0x55c68a[_0x4a01d9(0x149)](),this[_0x4a01d9(0x15f)][_0x4a01d9(0x155)](_0x4a01d9(0x14c)),_0x4c2a7d['classList']['toggle']('active'),document[_0x4a01d9(0x120)][_0x4a01d9(0x169)][_0x4a01d9(0x136)]=_0x4c2a7d[_0x4a01d9(0x15f)]['contains'](_0x4a01d9(0x14c))?_0x4a01d9(0x16a):'';}),document[_0x8de6e2(0x126)](_0x8de6e2(0x129),function(_0x17e454){const _0x33d499=_0x8de6e2;if(!_0x4c2a7d[_0x33d499(0x15f)][_0x33d499(0x16f)](_0x33d499(0x14c)))return;!_0x17e454[_0x33d499(0x127)][_0x33d499(0x160)](_0x33d499(0x12d))&&!_0x17e454[_0x33d499(0x127)]['closest']('.mobile-menu-btn')&&(_0x516f0e[_0x33d499(0x15f)][_0x33d499(0x13d)]('active'),_0x4c2a7d[_0x33d499(0x15f)][_0x33d499(0x13d)](_0x33d499(0x14c)),document[_0x33d499(0x120)][_0x33d499(0x169)][_0x33d499(0x136)]='');}),document[_0x8de6e2(0x151)](_0x8de6e2(0x143))['forEach'](_0x3f5934=>{const _0x475cec=_0x8de6e2;_0x3f5934[_0x475cec(0x126)](_0x475cec(0x129),function(){const _0x3bf578=_0x475cec;window[_0x3bf578(0x134)]<=0x300&&(_0x516f0e['classList']['remove']('active'),_0x4c2a7d[_0x3bf578(0x15f)]['remove']('active'),document[_0x3bf578(0x120)][_0x3bf578(0x169)][_0x3bf578(0x136)]='');});});}function _0x123518(){const _0x20c37a=_0x2c04f6,_0x51b2ba=document['querySelectorAll'](_0x20c37a(0x146)),_0x13930f=document[_0x20c37a(0x151)](_0x20c37a(0x131)),_0x2ef5d9=document[_0x20c37a(0x11c)]('progressLine'),_0xaa9adb=[document[_0x20c37a(0x11c)](_0x20c37a(0x141)),document[_0x20c37a(0x11c)](_0x20c37a(0x168)),document['getElementById']('step3Marker')],_0x1dbe79=new IntersectionObserver(_0x20bfd0=>{const _0x1466ec=_0x20c37a;_0x20bfd0[_0x1466ec(0x164)](_0x282fb4=>{const _0xe042ed=_0x1466ec;if(_0x282fb4['isIntersecting']){_0x282fb4['target']['classList']['add'](_0xe042ed(0x14c));const _0x42be14=document[_0xe042ed(0x151)](_0xe042ed(0x166))[_0xe042ed(0x135)],_0x9407ef=_0x51b2ba[_0xe042ed(0x135)];_0x2ef5d9[_0xe042ed(0x169)][_0xe042ed(0x118)]=_0x42be14/_0x9407ef*0x64+'%',_0xaa9adb[_0xe042ed(0x164)]((_0x92efcb,_0x43e008)=>{const _0x434a4d=_0xe042ed;_0x43e008<_0x42be14?_0x92efcb['classList'][_0x434a4d(0x139)](_0x434a4d(0x14c)):_0x92efcb[_0x434a4d(0x15f)][_0x434a4d(0x13d)](_0x434a4d(0x14c));});}});},{'threshold':0.5});_0x51b2ba[_0x20c37a(0x164)](_0x4e5291=>_0x1dbe79['observe'](_0x4e5291)),_0x13930f[_0x20c37a(0x164)](_0x505100=>_0x1dbe79['observe'](_0x505100));let _0x954a7f=0x0;const _0x3663b7=document[_0x20c37a(0x119)](_0x20c37a(0x123)),_0x2329cd=window[_0x20c37a(0x12f)]('(max-width:\x20768px)')[_0x20c37a(0x133)];window[_0x20c37a(0x126)](_0x20c37a(0x13e),()=>{const _0x39a7f6=_0x20c37a,_0x5a9149=window[_0x39a7f6(0x130)];if(_0x2329cd)_0x5a9149<=0x0?_0x3663b7['classList']['remove'](_0x39a7f6(0x11d)):_0x3663b7[_0x39a7f6(0x15f)]['add']('scrolling');else{if(_0x5a9149<=0x0)_0x3663b7[_0x39a7f6(0x15f)][_0x39a7f6(0x13d)](_0x39a7f6(0x170));else{if(_0x5a9149>_0x954a7f&&!_0x3663b7[_0x39a7f6(0x15f)][_0x39a7f6(0x16f)](_0x39a7f6(0x170)))_0x3663b7[_0x39a7f6(0x15f)]['add'](_0x39a7f6(0x170));else _0x5a9149<_0x954a7f&&_0x3663b7[_0x39a7f6(0x15f)][_0x39a7f6(0x16f)](_0x39a7f6(0x170))&&_0x3663b7[_0x39a7f6(0x15f)][_0x39a7f6(0x13d)](_0x39a7f6(0x170));}}_0x954a7f=_0x5a9149;}),document[_0x20c37a(0x151)](_0x20c37a(0x162))[_0x20c37a(0x164)](_0x257875=>{const _0xdf976d=_0x20c37a;_0x257875[_0xdf976d(0x126)](_0xdf976d(0x165),_0x479ab2=>{const _0x3f4f25=_0xdf976d,_0x490c58=_0x479ab2[_0x3f4f25(0x13f)]-_0x257875['getBoundingClientRect']()[_0x3f4f25(0x124)],_0x21ef38=_0x479ab2[_0x3f4f25(0x14d)]-_0x257875['getBoundingClientRect']()[_0x3f4f25(0x125)],_0x408b6f=_0x257875['offsetWidth']/0x2,_0x5dcd86=_0x257875[_0x3f4f25(0x15b)]/0x2,_0x10dddf=(_0x490c58-_0x408b6f)/0x14,_0x28289e=(_0x21ef38-_0x5dcd86)/0x14;_0x257875[_0x3f4f25(0x169)][_0x3f4f25(0x16b)]=_0x3f4f25(0x147)+_0x10dddf+'px,\x20'+_0x28289e+'px)';}),_0x257875[_0xdf976d(0x126)](_0xdf976d(0x117),()=>{const _0x402e3d=_0xdf976d;_0x257875[_0x402e3d(0x169)][_0x402e3d(0x16b)]='scale(1)';});});}function _0x5bfb57(){const _0x127e66=_0x2c04f6,_0x2d078a=document[_0x127e66(0x151)](_0x127e66(0x15a));_0x2d078a['forEach'](_0x302a45=>{const _0x2d5e89=_0x127e66;_0x302a45[_0x2d5e89(0x126)]('mouseenter',()=>{const _0x1f05b7=_0x2d5e89;_0x302a45[_0x1f05b7(0x169)][_0x1f05b7(0x16b)]=_0x1f05b7(0x13b),_0x302a45[_0x1f05b7(0x169)][_0x1f05b7(0x167)]=_0x1f05b7(0x14e);}),_0x302a45[_0x2d5e89(0x126)](_0x2d5e89(0x117),()=>{const _0x40047f=_0x2d5e89;_0x302a45[_0x40047f(0x169)]['transform']='',_0x302a45[_0x40047f(0x169)][_0x40047f(0x167)]=_0x40047f(0x13c);});});}_0xfb2a5f(),_0x3d71ea(),_0xec13df(),_0x831ae9(),_0x5bfb57();}));const solutionObserver=new IntersectionObserver(_0x5285dc=>{const _0xdde6b3=_0x5372a5;_0x5285dc[_0xdde6b3(0x164)](_0x10a4ad=>{const _0x165075=_0xdde6b3;_0x10a4ad[_0x165075(0x152)]&&(_0x10a4ad[_0x165075(0x127)][_0x165075(0x15f)][_0x165075(0x139)](_0x165075(0x14c)),solutionObserver['unobserve'](_0x10a4ad[_0x165075(0x127)]));});},{'threshold':0.3});document[_0x5372a5(0x151)](_0x5372a5(0x131))[_0x5372a5(0x164)](_0x13120c=>{const _0x1b2454=_0x5372a5;solutionObserver[_0x1b2454(0x15c)](_0x13120c);}),document[_0x5372a5(0x126)](_0x5372a5(0x145),_0x137112=>_0x137112[_0x5372a5(0x159)]()),document['onkeydown']=function(_0x2fc3f6){const _0x19f91e=_0x5372a5;if(_0x2fc3f6['ctrlKey']&&(_0x2fc3f6[_0x19f91e(0x163)]==='u'||_0x2fc3f6[_0x19f91e(0x163)]==='s'||_0x2fc3f6[_0x19f91e(0x163)]==='i'||_0x2fc3f6[_0x19f91e(0x163)]==='j'))return![];};function _0x1d74(){const _0x40801c=['active','clientY','none','translate3d(','the\x20planet','querySelectorAll','isIntersecting','px)','appendChild','toggle','webkitBackgroundClip','text','6045735XyWgye','preventDefault','.animal-icon','offsetHeight','observe','0\x200\x20','4uNoQiP','classList','closest','.mobile-menu-btn','.image-container','key','forEach','mousemove','.problem-step.active','animation','step2Marker','style','hidden','transform','display','linear-gradient(to\x20right,\x20','createElement','contains','hide-nav','.india','5470704KMgYZa','6337oPOWHi','ripple-effect','getBoundingClientRect','mouseleave','height','querySelector','translateY(','1938390VVFjEQ','getElementById','scrolling','px,\x20','px\x20rgba(92,\x20204,\x2096,\x20','body','span','4QMeJAP','.glass-nav','left','top','addEventListener','target','opacity','click','DOMContentLoaded','.loading-screen','8679560hvnMoI','.nav-links','sin','matchMedia','pageYOffset','.solution-card','translate3d(0,\x200,\x200)','matches','innerWidth','length','overflow','abs','3810rEtJOO','add','6433Gafjgp','scale(1.2)\x20rotate(10deg)','floatIcon\x205s\x20ease-in-out\x20infinite','remove','scroll','clientX','#FF9933','step1Marker','.btn','.nav-links\x20a','width','contextmenu','.problem-step','scale(1.05)\x20translate(','compassion','stopPropagation','7288857fQPpCs','boxShadow'];_0x1d74=function(){return _0x40801c;};return _0x1d74();}
+
+    </script>
+</body>
+</html>

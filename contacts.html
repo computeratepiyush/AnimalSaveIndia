@@ -1,0 +1,1885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | AnimalSaveIndia</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <style>
+        /* All existing :root variables and base styles from index.html */
+        :root {
+            --primary: #5CCC60;
+            --primary-light: rgba(92, 204, 96, 0.2);
+            --secondary: #8BC34A;
+            --accent: #AED581;
+            --dark: #121212;
+            --darker: #0A0A0A;
+            --light: #FFFFFF;
+            --gray: #9E9E9E;
+            --light-gray: rgba(255, 255, 255, 0.1);
+            --glass: rgba(30, 30, 30, 0.6);
+            --border-radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --flag-orange: #FF9933;
+            --flag-white: #FFFFFF;
+            --flag-green: #138808;
+            --flag-blue: #000080;
+        }
+
+        /* Include all base styles from index.html here */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+            overflow-x: hidden;
+        }
+
+        /* Particle Background */
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.4;
+        }
+
+
+
+         .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--darker);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .loading-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .loading-background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, var(--primary-light) 0%, transparent 30%),
+                radial-gradient(circle at 80% 70%, rgba(139, 195, 74, 0.2) 0%, transparent 30%);
+            opacity: 0.3;
+            animation: pulse 8s infinite alternate;
+        }
+
+        .loading-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .loading-message {
+            font-size: 2rem;
+            margin-bottom: 40px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+        }
+
+        .loading-message::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--primary));
+            background-size: 200% 100%;
+            border-radius: 2px;
+            animation: shine-border 4s linear infinite;
+        }
+
+        .loading-spinner {
+            width: 70px;
+            height: 70px;
+            border: 5px solid var(--light-gray);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            position: relative;
+            animation: spin 1.5s linear infinite;
+        }
+
+        .loading-spinner::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 5px solid transparent;
+            border-radius: 50%;
+            border-bottom-color: var(--secondary);
+            animation: spinReverse 2s linear infinite;
+        }
+
+        .loading-animals {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .loading-animal {
+            position: absolute;
+            font-size: 3rem;
+            opacity: 0;
+            animation: floatAnimal 15s linear infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.2; }
+            50% { transform: scale(1.1); opacity: 0.3; }
+            100% { transform: scale(1); opacity: 0.2; }
+        }
+
+        @keyframes loadingLine {
+            0% { transform: scaleX(0); }
+            50% { transform: scaleX(1); }
+            100% { transform: scaleX(0); transform-origin: right; }
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes spinReverse {
+            to { transform: rotate(-360deg); }
+        }
+
+        @keyframes floatAnimal {
+            0% { transform: translateY(100vh) translateX(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.3; }
+            90% { opacity: 0.3; }
+            100% { transform: translateY(-100px) translateX(100px) rotate(360deg); opacity: 0; }
+        }
+
+        /* Particle Background */
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.4;
+        }
+
+
+       /* Loading Screen - Fixed Layout */
+       .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--darker);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .loading-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .loading-background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, var(--primary-light) 0%, transparent 30%),
+                radial-gradient(circle at 80% 70%, rgba(139, 195, 74, 0.2) 0%, transparent 30%);
+            opacity: 0.3;
+            animation: pulse 8s infinite alternate;
+        }
+
+        .loading-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .loading-message {
+            font-size: 2rem;
+            margin-bottom: 40px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+        }
+
+        .loading-message::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--primary));
+            background-size: 200% 100%;
+            border-radius: 2px;
+            animation: shine-border 4s linear infinite;
+        }
+
+        .loading-spinner {
+            width: 70px;
+            height: 70px;
+            border: 5px solid var(--light-gray);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            position: relative;
+            animation: spin 1.5s linear infinite;
+        }
+
+        .loading-spinner::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 5px solid transparent;
+            border-radius: 50%;
+            border-bottom-color: var(--secondary);
+            animation: spinReverse 2s linear infinite;
+        }
+
+        .loading-animals {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .loading-animal {
+            position: absolute;
+            font-size: 3rem;
+            opacity: 0;
+            animation: floatAnimal 15s linear infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.2; }
+            50% { transform: scale(1.1); opacity: 0.3; }
+            100% { transform: scale(1); opacity: 0.2; }
+        }
+
+        @keyframes loadingLine {
+            0% { transform: scaleX(0); }
+            50% { transform: scaleX(1); }
+            100% { transform: scaleX(0); transform-origin: right; }
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes spinReverse {
+            to { transform: rotate(-360deg); }
+        }
+
+        @keyframes floatAnimal {
+            0% { transform: translateY(100vh) translateX(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.3; }
+            90% { opacity: 0.3; }
+            100% { transform: translateY(-100px) translateX(100px) rotate(360deg); opacity: 0; }
+        }
+
+        /* Particle Background */
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.4;
+        }
+
+        /* Navigation */
+        .glass-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: var(--glass);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--light-gray);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .nav-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-animate {
+            position: relative;
+        }
+
+        .logo-animate .india {
+            background: linear-gradient(to right, var(--flag-orange), var(--flag-white), var(--flag-green));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            display: inline-block;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            position: relative;
+            padding: 8px 0;
+            color: var(--light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* Buttons - Matches index.html exactly */
+        .btn {
+            position: relative;
+            overflow: hidden;
+            border: none;
+            padding: 16px 36px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            z-index: 1;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transform-style: preserve-3d;
+            perspective: 500px;
+            will-change: transform;
+        }
+
+        .primary-btn {
+            background: linear-gradient(135deg, var(--primary), #4ab84e);
+            color: white;
+            box-shadow: 0 8px 20px rgba(92, 204, 96, 0.3);
+            border: none;
+            position: relative;
+        }
+
+        .primary-btn::after {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 50px;
+            background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
+            background-size: 200% 100%;
+            z-index: -2;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .primary-btn:hover::after {
+            opacity: 1;
+            animation: shine-border 4s linear infinite;
+        }
+
+        .primary-btn::before {
+            content: '';
+            position: absolute;
+            inset: 1px;
+            border-radius: 50px;
+            background: linear-gradient(135deg, var(--primary), #4ab84e);
+            z-index: -1;
+            transition: all 0.4s ease;
+        }
+
+        /* Contact Hero Section */
+        .contact-hero {
+            padding: 150px 5% 100px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .contact-hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
+        }
+
+        .contact-hero-bg-circle {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+        }
+
+        .contact-hero-bg-circle:nth-child(1) {
+            width: 400px;
+            height: 400px;
+            background: var(--primary);
+            top: 20%;
+            left: 10%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .contact-hero-bg-circle:nth-child(2) {
+            width: 500px;
+            height: 500px;
+            background: var(--secondary);
+            bottom: 10%;
+            right: 10%;
+            animation: float 10s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(5deg); }
+        }
+
+        .contact-intro {
+            background: var(--glass);
+            border: 1px solid var(--light-gray);
+            border-radius: 50px;
+            padding: 12px 24px;
+            display: inline-block;
+            margin-bottom: 40px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-intro::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(92, 204, 96, 0.2), transparent);
+            transform: translateX(-100%);
+            transition: transform 1.5s cubic-bezier(0.65, 0, 0.35, 1);
+        }
+
+        .contact-tag {
+            color: var(--primary);
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .contact-heading {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 30px;
+            background: linear-gradient(to right, #fff, var(--primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+        }
+
+        .contact-subheading {
+            color: var(--gray);
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto 60px;
+            line-height: 1.7;
+        }
+
+        /* Enhanced Apple-style Form */
+        .contact-form-container {
+            max-width: 700px;
+            width: 100%;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .contact-form {
+            background: var(--glass);
+            border: 1px solid var(--light-gray);
+            border-radius: var(--border-radius);
+            padding: 50px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .form-group {
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .form-group.floating {
+            position: relative;
+            padding-top: 20px;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid var(--light-gray);
+            padding: 15px 0;
+            color: var(--light);
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+        
+        .form-group textarea {
+            resize: none;
+            min-height: 100px;
+        }
+        
+        .form-group label {
+            position: absolute;
+            top: 30px;
+            left: 0;
+            color: var(--gray);
+            pointer-events: none;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+        
+        .form-group .underline {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+        
+        /* Enhanced Floating Label Effect */
+        .form-group.floating input:focus ~ label,
+        .form-group.floating input:valid ~ label,
+        .form-group.floating select:focus ~ label,
+        .form-group.floating select:valid ~ label,
+        .form-group.floating textarea:focus ~ label,
+        .form-group.floating textarea:valid ~ label {
+            top: 0;
+            font-size: 0.9rem;
+            color: var(--primary);
+            transform: translateY(-10px);
+        }
+        
+        .form-group input:focus ~ .underline,
+        .form-group select:focus ~ .underline,
+        .form-group textarea:focus ~ .underline {
+            width: 100%;
+        }
+        
+        /* Apple-like focus effect */
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            background: rgba(92, 204, 96, 0.05);
+            border-radius: 4px 4px 0 0;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        
+        /* Success Message */
+        .form-success {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: var(--glass);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            text-align: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transform: translateY(20px);
+        }
+        
+        .form-success.active {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+        
+        .form-success i {
+            font-size: 4rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            animation: bounceIn 0.6s cubic-bezier(0.68, -0.6, 0.32, 1.6) both;
+        }
+        
+        .form-success h3 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            background: linear-gradient(to right, #fff, var(--primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeInUp 0.6s 0.2s cubic-bezier(0.68, -0.6, 0.32, 1.6) both;
+        }
+        
+        .form-success p {
+            color: var(--gray);
+            line-height: 1.6;
+            animation: fadeInUp 0.6s 0.3s cubic-bezier(0.68, -0.6, 0.32, 1.6) both;
+        }
+        
+        @keyframes bounceIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            80% { transform: scale(1.1); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+
+
+        /* Custom Select Dropdown Styles */
+.form-group select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    color: var(--light);
+    padding-right: 30px; /* Space for custom arrow */
+    cursor: pointer;
+}
+
+/* Custom dropdown arrow */
+.form-group.floating::after {
+    content: '\f078';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    right: 0;
+    bottom: 15px;
+    color: var(--gray);
+    pointer-events: none;
+    transition: var(--transition);
+}
+
+.form-group.floating:focus-within::after {
+    color: var(--primary);
+    transform: rotate(180deg);
+}
+
+/* Dropdown options styling */
+.form-group select option {
+    background-color: var(--darker);
+    color: var(--light);
+    padding: 10px;
+}
+
+/* Focus state */
+.form-group select:focus {
+    outline: none;
+    background: rgba(92, 204, 96, 0.05);
+}
+
+/* For Firefox */
+@-moz-document url-prefix() {
+    .form-group select {
+        color: var(--light) !important;
+        text-shadow: 0 0 0 var(--light);
+    }
+}
+
+        /* Footer - Matches index.html exactly */
+        .footer {
+            padding: 100px 5% 60px;
+            background: var(--darker);
+            border-top: 1px solid var(--light-gray);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.05;
+        }
+
+        .footer-bg-circle {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+        }
+
+        .footer-bg-circle:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            background: var(--primary);
+            top: 30%;
+            left: 20%;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        .footer-bg-circle:nth-child(2) {
+            width: 400px;
+            height: 400px;
+            background: var(--secondary);
+            bottom: 20%;
+            right: 15%;
+            animation: float 10s ease-in-out infinite;
+        }
+
+        /* Footer Animation - Conveyor Belt */
+        .footer-animation {
+            height: 120px;
+            width: 100%;
+            position: relative;
+            margin-bottom: 50px;
+            overflow: hidden;
+        }
+
+        .conveyor-belt {
+            display: flex;
+            position: absolute;
+            animation: scrollBelt 30s linear infinite;
+        }
+
+        .animal-icon {
+            font-size: 3rem;
+            margin: 0 40px;
+            transition: all 0.3s ease;
+            position: relative;
+            animation: floatIcon 5s ease-in-out infinite;
+        }
+
+        @keyframes scrollBelt {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 50px;
+            max-width: 1200px;
+            margin: 0 auto 80px;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            display: inline-block;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .footer-description {
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--glass);
+            border: 1px solid var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light);
+            transition: var(--transition);
+            font-size: 1.2rem;
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 20px rgba(92, 204, 96, 0.3);
+        }
+
+        .footer-links h3 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            color: var(--light);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+            font-size: 1.1rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 60px;
+            border-top: 1px solid var(--light-gray);
+            color: var(--gray);
+            font-size: 1rem;
+        }
+
+        /* Made with Passion Section */
+        .made-with-love {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 30px 0;
+            font-size: 1.1rem;
+            color: var(--gray);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .heart-icon {
+            margin: 0 8px;
+            font-size: 1.3rem;
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: pulse 2s infinite;
+        }
+
+        .passion-text {
+            position: relative;
+            display: inline-block;
+        }
+
+        .passion-text:first-child::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, var(--primary), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .made-with-love:hover .passion-text:first-child::after {
+            transform: translateX(0);
+        }
+
+        .passion-text:last-child::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            right: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary));
+            transform: translateX(100%);
+            transition: transform 0.6s ease;
+        }
+
+        .made-with-love:hover .passion-text:last-child::before {
+            transform: translateX(0);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.8; }
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .contact-heading {
+                font-size: 2.5rem;
+            }
+            
+            .contact-subheading {
+                font-size: 1.1rem;
+            }
+            
+            .contact-form {
+                padding: 30px;
+            }
+            
+            .footer {
+                padding: 60px 5% 40px;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                margin-bottom: 50px;
+            }
+            
+            .footer-col {
+                text-align: center;
+                margin-bottom: 30px;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+            
+            .footer-animation {
+                height: 80px;
+            }
+            
+            .animal-icon {
+                font-size: 2.2rem;
+                margin: 0 20px;
+            }
+            
+            .made-with-love {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .heart-icon {
+                transform: rotate(90deg);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .contact-heading {
+                font-size: 2rem;
+            }
+            
+            .contact-form {
+                padding: 20px;
+            }
+        }
+
+
+
+
+
+
+
+
+                /* Updated Navigation Styles */
+.nav-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.glass-nav {
+    transition: transform 0.3s ease;
+}
+
+/* Desktop Navigation */
+@media (min-width: 769px) {
+    .glass-nav.hide-nav {
+        transform: translateY(-100%);
+    }
+    
+    .nav-links {
+        display: flex;
+        gap: 30px;
+        margin: 0 auto;
+    }
+    
+    .mobile-menu-btn,
+    .mobile-join-btn {
+        display: none;
+    }
+    
+    .desktop-join-btn {
+        margin-left: auto;
+    }
+}
+
+/* Mobile Navigation */
+@media (max-width: 768px) {
+    .glass-nav.scrolling {
+        transform: translateY(-100%);
+    }
+    
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 300px;
+        height: 100vh;
+        background: var(--darker);
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 100px 30px 30px;
+        gap: 25px;
+        transition: right 0.3s ease;
+        z-index: 90;
+        border-left: 1px solid var(--light-gray);
+    }
+    
+    .nav-links.active {
+        right: 0;
+    }
+    
+    .desktop-join-btn {
+        display: none;
+    }
+    
+    .mobile-menu-btn {
+        display: flex;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.8rem;
+        cursor: pointer;
+        margin-left: auto;
+        z-index: 100;
+        padding: 10px;
+    }
+    
+    .mobile-menu-btn .close-icon {
+        display: none;
+    }
+    
+    .mobile-menu-btn.active .close-icon {
+        display: block;
+    }
+    
+    .mobile-menu-btn.active .menu-icon {
+        display: none;
+    }
+    
+    .mobile-join-btn {
+        margin-top: 30px;
+        width: 100%;
+    }
+}
+
+/* Active nav link highlighting */
+.nav-links a.active {
+    color: var(--primary);
+}
+
+.nav-links a.active::after {
+    width: 100%;
+}
+
+
+
+
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+}
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <!-- Loading Screen (Same as index.html) -->
+    <div class="loading-screen">
+        <div class="loading-container">
+            <div class="loading-background"></div>
+            <div class="loading-animals">
+                <div class="loading-animal" style="left: 10%; animation-delay: 0s;">🐄</div>
+                <div class="loading-animal" style="left: 30%; animation-delay: 2s;">🐖</div>
+                <div class="loading-animal" style="left: 50%; animation-delay: 4s;">🐓</div>
+                <div class="loading-animal" style="left: 70%; animation-delay: 6s;">🐑</div>
+                <div class="loading-animal" style="left: 90%; animation-delay: 8s;">🐟</div>
+            </div>
+            <div class="loading-content">
+                <div class="loading-message">Building a kinder world for <span class="changing-text">animals</span></div>
+                <div class="loading-spinner"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Particle Background -->
+    <div id="particles-js"></div>
+    
+    <!-- Navigation (Matches index.html exactly) -->
+        <!-- Navigation -->
+<nav class="glass-nav">
+    <div class="nav-container">
+        <a href="#" class="nav-logo">
+            <span class="logo-animate">AnimalSave<span class="india">India</span></span>
+        </a>
+        
+        <button class="mobile-menu-btn">
+            <i class="fas fa-bars menu-icon"></i>
+            <i class="fas fa-times close-icon"></i>
+        </button>
+        
+        <div class="nav-links">
+            <a href="/index.html">Home</a>
+            <a href="/OurStory.html">Our Story</a>
+            <a href="/whygovegan.html">Why Go Vegan</a>
+            <a href="/contacts.html" class="active">Contact</a>
+            <button class="btn primary-btn mobile-join-btn" onclick="window.location.href='/join.html'">
+                <span class="btn-text">Join Us Now</span>
+            </button>
+        </div>
+        
+        <div class="desktop-join-btn">
+            <button class="btn primary-btn" onclick="window.location.href='/join.html'" >
+                <span class="btn-text">Join Us Now</span>
+            </button>
+        </div>
+    </div>
+</nav>
+
+    <!-- Contact Hero Section -->
+    <section class="contact-hero">
+        <div class="contact-hero-bg">
+            <div class="contact-hero-bg-circle"></div>
+            <div class="contact-hero-bg-circle"></div>
+        </div>
+        
+        <div class="contact-intro">
+            <div class="contact-tag">We're Here to Help</div>
+        </div>
+        
+        <h1 class="contact-heading">Let's Create Change Together</h1>
+        
+        <p class="contact-subheading">
+            Your voice matters in the fight for animal rights. Whether you have questions, 
+            suggestions, or want to collaborate, we'd love to hear from you. Our team 
+            responds to all inquiries within 24 hours.
+        </p>
+        
+        <div class="contact-form-container">
+            <form id="contactForm" class="contact-form">
+                <div class="form-group floating">
+                    <input type="text" id="name" name="name" required>
+                    <label for="name">Full Name</label>
+                    <div class="underline"></div>
+                </div>
+                
+                <div class="form-group floating">
+                    <input type="email" id="email" name="email" required>
+                    <label for="email">Email Address</label>
+                    <div class="underline"></div>
+                </div>
+                
+                <div class="form-group floating">
+                    <input type="tel" id="phone" name="phone" pattern="[+]{1}[0-9]{11,14}" title="Include country code (e.g., +91XXXXXXXXXX)">
+                    <label for="phone">Phone Number (with country code)</label>
+                    <div class="underline"></div>
+                </div>
+                
+                <div class="form-group floating">
+                    <select id="subject" name="subject" required>
+                        <option value=""></option>
+                        <option value="general">General Inquiry</option>
+                        <option value="volunteer">Volunteer Opportunity</option>
+                        <option value="donation">Donation Question</option>
+                        <option value="partnership">Partnership Inquiry</option>
+                        <option value="media">Media Request</option>
+                        <option value="report">Cruelty Report</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <label for="subject">Subject</label>
+                    <div class="underline"></div>
+                </div>
+                
+                <div class="form-group floating">
+                    <textarea id="message" name="message" rows="4" required></textarea>
+                    <label for="message">Your Message</label>
+                    <div class="underline"></div>
+                </div>
+                
+                <div class="form-group">
+                    <button type="submit" class="btn primary-btn submit-btn">
+                        <span class="btn-text">Send Message</span>
+                    </button>
+                </div>
+            </form>
+            
+            <div class="form-success" id="formSuccess">
+                <i class="fas fa-check-circle"></i>
+                <h3>Message Sent Successfully!</h3>
+                <p>We'll get back to you within 24 hours. Thank you for reaching out.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Matches index.html exactly) -->
+    <footer class="footer">
+        <div class="footer-bg">
+            <div class="footer-bg-circle"></div>
+            <div class="footer-bg-circle"></div>
+        </div>
+        
+        <div class="footer-animation">
+            <div class="conveyor-belt">
+                <div class="animal-icon">🐄</div>
+                <div class="animal-icon">🐖</div>
+                <div class="animal-icon">🐓</div>
+                <div class="animal-icon">🐑</div>
+                <div class="animal-icon">🐟</div>
+                <div class="animal-icon">🐄</div>
+                <div class="animal-icon">🐖</div>
+                <div class="animal-icon">🐓</div>
+                <div class="animal-icon">🐑</div>
+                <div class="animal-icon">🐟</div>
+            </div>
+        </div>
+        
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="footer-logo">AnimalSaveIndia</div>
+                <p class="footer-description">Compassionate living for a kinder world. Join our movement to protect animals and promote veganism across India.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <div class="footer-links">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="/join.html#events">Events</a></li>
+                        <li><a href="#">Animal Rights</a></li>
+                        <li><a href="#">Recipes</a></li>
+                        <li><a href="/ourstory.html#documentary-section">Documentaries</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-col">
+                <div class="footer-links">
+                    <h3>Our Compassion's</h3>
+                    <ul>
+                        <li><a href="/index.html">Home</a></li>
+                        <li><a href="/OurStory.html">Our Story</a></li>
+                        <li><a href="/whygovegan.html">Why Go Vegan</a></li>
+                        <li><a href="/contacts.html">Contacts</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-col">
+                <div class="footer-links">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="/PrivacyPolicy.html">Privacy Policy</a></li>
+                        <li><a href="/TermsofService.html">Terms of Service</a></li>
+                        <li><a href="/contacts.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 AnimalSaveIndia. All rights reserved.</p>
+        </div>
+
+        <div class="made-with-love">
+            <span class="passion-text">Made with</span>
+            <span class="heart-icon">❤️</span>
+            <span class="passion-text">by ComputeratePiyush</span>
+        </div>
+    </footer>
+
+    <script>
+                // Loading Screen with Enhanced Animations
+            const loadingMessages = [
+                "animals",
+                "the planet",
+                "future generations",
+                "all beings",
+                "compassion"
+            ];
+        
+            // Select elements
+            const loadingScreen = document.querySelector('.loading-screen');
+            const loadingMessage = document.querySelector('.loading-message');
+            const changingText = document.querySelector('.changing-text');
+            const loadingSpinner = document.querySelector('.loading-spinner');
+            const loadingAnimals = document.querySelectorAll('.loading-animal');
+            const navLinksList = document.querySelectorAll('.nav-links a');
+            const buttons = document.querySelectorAll('.btn');
+            const missionCards = document.querySelectorAll('.mission-card');
+            const statItems = document.querySelectorAll('.stat-item');
+            const heroHeading = document.querySelector('.hero-heading');
+            const introBlock = document.querySelector('.intro-block');
+            const factItems = document.querySelectorAll('.fact-item');
+            const indiaText = document.querySelector('.india');
+            const particlesContainer = document.getElementById('particles-js');
+            const conveyorBelt = document.querySelector('.conveyor-belt');
+            const animalIcons = document.querySelectorAll('.animal-icon');
+            const tornadoText = document.querySelector('.tornado-text');
+            
+            // 1. Enhanced Loading Screen Animation
+            function showLoadingMessage() {
+                // Change text with typing effect
+                let textIndex = 0;
+                const changeText = () => {
+                    changingText.style.opacity = '0';
+                    setTimeout(() => {
+                        changingText.textContent = loadingMessages[textIndex];
+                        changingText.style.opacity = '1';
+                        textIndex = (textIndex + 1) % loadingMessages.length;
+                    }, 500);
+                };
+                
+                // Initial change
+                changeText();
+                // Change every 3 seconds
+                setInterval(changeText, 3000);
+        
+                // Animate spinner with glow effect
+                let rotate = 0;
+                const spinInterval = setInterval(() => {
+                    rotate += 10;
+                    loadingSpinner.style.transform = `rotate(${rotate}deg)`;
+                    
+                    // Pulsing glow effect
+                    const glowIntensity = Math.abs(Math.sin(rotate * Math.PI / 180)) * 0.5 + 0.5;
+                    loadingSpinner.style.boxShadow = `0 0 ${glowIntensity * 15}px rgba(92, 204, 96, ${glowIntensity * 0.5})`;
+                }, 50);
+        
+                // Animate floating animals with random delays
+                loadingAnimals.forEach((animal, i) => {
+                    animal.style.animationDelay = `${i * 2}s`;
+                    animal.style.animationDuration = `${15 + i * 3}s`;
+                    animal.style.opacity = '0.3';
+                });
+        
+                // Hide after delay with fancy transition
+                setTimeout(() => {
+                    loadingScreen.style.opacity = '0';
+                    loadingScreen.style.backdropFilter = 'blur(20px)';
+                    
+                    setTimeout(() => {
+                        loadingScreen.style.display = 'none';
+                        clearInterval(spinInterval);
+                        initAnimations();
+                        
+                        // Trigger shine animation on intro block
+                        setTimeout(() => {
+                            introBlock.style.setProperty('--shine-pos', '100%');
+                        }, 500);
+                    }, 800);
+                }, 1000);
+            }
+        
+            // 2. India Flag Animation
+            function animateIndiaFlag() {
+                if (!indiaText) return;
+                
+                let wavePos = 0;
+                const colors = ['#FF9933', '#FFFFFF', '#138808'];
+                let colorIndex = 0;
+                
+                setInterval(() => {
+                    wavePos += 0.15;
+                    
+                    // Wave motion
+                    const waveHeight = Math.sin(wavePos) * 8;
+                    indiaText.style.transform = `translateY(${waveHeight}px)`;
+                    
+                    // Color cycling effect for vibrant look
+                    if (wavePos % (Math.PI * 2) < 0.1) {
+                        colorIndex = (colorIndex + 1) % colors.length;
+                        const nextColor = (colorIndex + 1) % colors.length;
+                        indiaText.style.background = `linear-gradient(to right, ${colors[colorIndex]}, ${colors[nextColor]})`;
+                        indiaText.style.webkitBackgroundClip = 'text';
+                        indiaText.style.backgroundClip = 'text';
+                    }
+                }, 50);
+            }
+        // 3. Form Submission Handler
+        async function handleFormSubmit(e) {
+            e.preventDefault();
+            
+            const form = e.target;
+            const formData = new FormData(form);
+            const submitBtn = form.querySelector('.submit-btn');
+            
+            // Show loading state
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span class="btn-text"><i class="fas fa-spinner fa-spin"></i> Sending...</span>';
+            
+            try {
+                // Replace with your actual AWS Lambda endpoint
+                const LAMBDA_ENDPOINT = 'YOUR_API_GATEWAY_URL';
+                
+                const response = await fetch(LAMBDA_ENDPOINT, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(Object.fromEntries(formData))
+                });
+                
+                if (response.ok) {
+                    // Show success message with animations
+                    formSuccess.classList.add('active');
+                    form.reset();
+                    
+                    // Hide form and show success
+                    contactForm.style.opacity = '0';
+                    contactForm.style.pointerEvents = 'none';
+                    
+                    // Reset form after 5 seconds
+                    setTimeout(() => {
+                        formSuccess.classList.remove('active');
+                        contactForm.style.opacity = '1';
+                        contactForm.style.pointerEvents = 'auto';
+                    }, 5000);
+                } else {
+                    throw new Error('Submission failed');
+                }
+            } catch (error) {
+                // Show error message
+                alert('There was an error submitting your form. Please try again.');
+                console.error('Error:', error);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<span class="btn-text">Send Message</span>';
+            }
+        }
+
+
+
+        function enhanceSelectDropdowns() {
+    const selectElements = document.querySelectorAll('.form-group select');
+    
+    selectElements.forEach(select => {
+        // Change label color when selection is made
+        select.addEventListener('change', function() {
+            const label = this.parentElement.querySelector('label');
+            if (this.value) {
+                label.style.color = 'var(--primary)';
+            } else {
+                label.style.color = 'var(--gray)';
+            }
+        });
+        
+        // Better focus handling
+        select.addEventListener('focus', function() {
+            this.parentElement.querySelector('.underline').style.width = '100%';
+            this.parentElement.querySelector('label').style.color = 'var(--primary)';
+        });
+        
+        select.addEventListener('blur', function() {
+            this.parentElement.querySelector('.underline').style.width = '0';
+            if (!this.value) {
+                this.parentElement.querySelector('label').style.color = 'var(--gray)';
+            }
+        });
+    });
+}
+
+
+
+
+        // 4. Button Effects
+        function setupButtonEffects() {
+            buttons.forEach(button => {
+                // Add magnetic effect
+                button.addEventListener('mousemove', (e) => {
+                    const rect = button.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    
+                    const moveX = (x - centerX) / 5;
+                    const moveY = (y - centerY) / 5;
+                    
+                    button.style.transform = `translate3d(${moveX}px, ${moveY}px, 0)`;
+                });
+                
+                button.addEventListener('mouseleave', () => {
+                    button.style.transform = 'translate3d(0, 0, 0)';
+                });
+                
+                // Add ripple effect
+                button.addEventListener('click', function(e) {
+                    const rect = button.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    const ripple = document.createElement('span');
+                    ripple.classList.add('ripple-effect');
+                    ripple.style.left = `${x}px`;
+                    ripple.style.top = `${y}px`;
+                    this.appendChild(ripple);
+                    
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                });
+            });
+        }
+
+        // 5. Form Field Animations
+        function setupFormAnimations() {
+            const formGroups = document.querySelectorAll('.form-group.floating');
+            
+            formGroups.forEach(group => {
+                const input = group.querySelector('input, select, textarea');
+                const label = group.querySelector('label');
+                const underline = group.querySelector('.underline');
+                
+                // Check if field has content on page load
+                if (input.value) {
+                    label.style.top = '0';
+                    label.style.fontSize = '0.9rem';
+                    label.style.color = 'var(--primary)';
+                    label.style.transform = 'translateY(-10px)';
+                }
+                
+                // Enhanced focus effects
+                input.addEventListener('focus', () => {
+                    label.style.color = 'var(--primary)';
+                    underline.style.width = '100%';
+                    
+                    // Apple-like scale effect
+                    label.style.transform = 'translateY(-10px) scale(0.9)';
+                });
+                
+                input.addEventListener('blur', () => {
+                    if (!input.value) {
+                        label.style.color = 'var(--gray)';
+                        label.style.transform = '';
+                    }
+                    underline.style.width = '0';
+                });
+            });
+        }
+
+        // 6. Footer Animation
+        function setupFooterAnimation() {
+            animalIcons.forEach(icon => {
+                icon.addEventListener('mouseenter', () => {
+                    icon.style.transform = 'scale(1.2) rotate(10deg)';
+                    icon.style.animation = 'none';
+                });
+                
+                icon.addEventListener('mouseleave', () => {
+                    icon.style.transform = '';
+                    icon.style.animation = 'floatIcon 5s ease-in-out infinite';
+                });
+            });
+        }
+
+        function setupMobileMenu() {
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+    
+    if (!mobileMenuBtn || !navLinks) return;
+    
+    mobileMenuBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        this.classList.toggle('active');
+        navLinks.classList.toggle('active');
+        
+        // Toggle body scroll
+        document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+    });
+    
+    // Close menu when clicking outside or on links
+    document.addEventListener('click', function(e) {
+        if (!navLinks.classList.contains('active')) return;
+        
+        if (!e.target.closest('.nav-links') && !e.target.closest('.mobile-menu-btn')) {
+            mobileMenuBtn.classList.remove('active');
+            navLinks.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+    
+    // Close menu when clicking nav links (for mobile)
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', function() {
+            if (window.innerWidth <= 768) {
+                mobileMenuBtn.classList.remove('active');
+                navLinks.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    });
+}
+
+        // 8. Particle Background
+        function initParticles() {
+            if (typeof particlesJS !== 'undefined') {
+                particlesJS('particles-js', {
+                    particles: {
+                        number: { value: 80 },
+                        color: { value: "#5CCC60" },
+                        shape: { type: "circle" },
+                        opacity: { value: 0.5, random: true },
+                        size: { value: 3, random: true },
+                        line_linked: {
+                            enable: true,
+                            distance: 150,
+                            color: "#5CCC60",
+                            opacity: 0.3,
+                            width: 1
+                        },
+                        move: {
+                            enable: true,
+                            speed: 2,
+                            direction: "none",
+                            random: true,
+                            straight: false,
+                            out_mode: "out",
+                            bounce: false
+                        }
+                    },
+                    interactivity: {
+                        detect_on: "canvas",
+                        events: {
+                            onhover: { enable: true, mode: "repulse" },
+                            onclick: { enable: true, mode: "push" }
+                        }
+                    }
+                });
+            }
+        }
+
+        // 9. Initialize all animations
+        function initAnimations() {
+            animateIndiaFlag();
+            setupButtonEffects();
+            setupFormAnimations();
+            setupFooterAnimation();
+            setupNavScroll();
+            initParticles();
+            enhanceSelectDropdowns();
+            
+            // Form submission
+            contactForm.addEventListener('submit', handleFormSubmit);
+        }
+
+        // Start everything when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            showLoadingMessage();
+        });
+
+
+
+
+            // Navigation Scroll Behavior
+let lastScroll = 0;
+const navbar = document.querySelector('.glass-nav');
+const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+const navLinks = document.querySelector('.nav-links');
+const navItems = document.querySelectorAll('.nav-links a');
+const isMobile = window.matchMedia('(max-width: 768px)').matches;
+
+// Mobile menu toggle
+mobileMenuBtn.addEventListener('click', () => {
+    mobileMenuBtn.classList.toggle('active');
+    navLinks.classList.toggle('active');
+});
+
+// Close mobile menu when clicking a link
+navItems.forEach(item => {
+    item.addEventListener('click', () => {
+        if (isMobile) {
+            mobileMenuBtn.classList.remove('active');
+            navLinks.classList.remove('active');
+        }
+    });
+});
+
+// Scroll behavior
+window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+    
+    if (isMobile) {
+        // Mobile behavior - hide when scrolling, show only at top
+        if (currentScroll <= 0) {
+            navbar.classList.remove('scrolling');
+        } else {
+            navbar.classList.add('scrolling');
+        }
+    } else {
+        // Desktop behavior - hide on scroll down, show on scroll up
+        if (currentScroll <= 0) {
+            navbar.classList.remove('hide-nav');
+        } else if (currentScroll > lastScroll && !navbar.classList.contains('hide-nav')) {
+            navbar.classList.add('hide-nav');
+        } else if (currentScroll < lastScroll && navbar.classList.contains('hide-nav')) {
+            navbar.classList.remove('hide-nav');
+        }
+    }
+    
+    lastScroll = currentScroll;
+    
+    // Active section highlighting
+    const sections = document.querySelectorAll('section');
+    let currentSection = '';
+    
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        
+        if (pageYOffset >= sectionTop - 300) {
+            currentSection = section.getAttribute('id');
+        }
+    });
+    
+    navItems.forEach(item => {
+        item.classList.remove('active');
+        if (item.getAttribute('href') === `#${currentSection}`) {
+            item.classList.add('active');
+        }
+    });
+});
+
+
+
+  document.addEventListener('contextmenu', event => event.preventDefault());
+  document.onkeydown = function(e) {
+    if (e.ctrlKey && (e.key === 'u' || e.key === 's' || e.key === 'i' || e.key === 'j')) {
+      return false;
+    }
+  };
+
+
+
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,1578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service | AnimalSaveIndia</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <style>
+        /* Modern Reset with Dark Vegan Theme */
+        :root {
+            --primary: #5CCC60; /* Softer green */
+            --primary-light: rgba(92, 204, 96, 0.2);
+            --secondary: #8BC34A; /* Light green */
+            --accent: #AED581; /* Soft green */
+            --dark: #121212;
+            --darker: #0A0A0A;
+            --light: #FFFFFF;
+            --gray: #9E9E9E;
+            --light-gray: rgba(255, 255, 255, 0.1);
+            --glass: rgba(30, 30, 30, 0.6); /* Darker glass effect */
+            --border-radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --flag-orange: #FF9933;
+            --flag-white: #FFFFFF;
+            --flag-green: #138808;
+            --flag-blue: #000080;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+            overflow-x: hidden;
+        }
+
+        /* Loading Screen - Fixed Layout */
+        /* Loading Screen - Fixed Layout */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--darker);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .loading-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .loading-background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, var(--primary-light) 0%, transparent 30%),
+                radial-gradient(circle at 80% 70%, rgba(139, 195, 74, 0.2) 0%, transparent 30%);
+            opacity: 0.3;
+            animation: pulse 8s infinite alternate;
+        }
+
+        .loading-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .loading-message {
+            font-size: 2rem;
+            margin-bottom: 40px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+        }
+
+        .loading-message::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--primary));
+            background-size: 200% 100%;
+            border-radius: 2px;
+            animation: shine-border 4s linear infinite;
+        }
+
+        .loading-spinner {
+            width: 70px;
+            height: 70px;
+            border: 5px solid var(--light-gray);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            position: relative;
+            animation: spin 1.5s linear infinite;
+        }
+
+        .loading-spinner::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 5px solid transparent;
+            border-radius: 50%;
+            border-bottom-color: var(--secondary);
+            animation: spinReverse 2s linear infinite;
+        }
+
+        .loading-animals {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .loading-animal {
+            position: absolute;
+            font-size: 3rem;
+            opacity: 0;
+            animation: floatAnimal 15s linear infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.2; }
+            50% { transform: scale(1.1); opacity: 0.3; }
+            100% { transform: scale(1); opacity: 0.2; }
+        }
+
+        @keyframes loadingLine {
+            0% { transform: scaleX(0); }
+            50% { transform: scaleX(1); }
+            100% { transform: scaleX(0); transform-origin: right; }
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes spinReverse {
+            to { transform: rotate(-360deg); }
+        }
+
+        @keyframes floatAnimal {
+            0% { transform: translateY(100vh) translateX(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.3; }
+            90% { opacity: 0.3; }
+            100% { transform: translateY(-100px) translateX(100px) rotate(360deg); opacity: 0; }
+        }
+
+
+        /* Particle Background */
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.4;
+        }
+
+        /* Navigation */
+        .glass-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: var(--glass);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--light-gray);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .nav-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-animate {
+            position: relative;
+        }
+
+        .logo-animate .india {
+            background: linear-gradient(to right, var(--flag-orange), var(--flag-white), var(--flag-green));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            display: inline-block;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            position: relative;
+            padding: 8px 0;
+            color: var(--light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* Buttons - Improved for huly.io style */
+        .btn {
+            position: relative;
+            overflow: hidden;
+            border: none;
+            padding: 16px 36px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            z-index: 1;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transform-style: preserve-3d;
+            perspective: 500px;
+            will-change: transform;
+        }
+
+        .primary-btn {
+            background: linear-gradient(135deg, var(--primary), #4ab84e);
+            color: white;
+            box-shadow: 0 8px 20px rgba(92, 204, 96, 0.3);
+            border: none;
+            position: relative;
+        }
+
+        .primary-btn::after {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 50px;
+            background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
+            background-size: 200% 100%;
+            z-index: -2;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .primary-btn:hover::after {
+            opacity: 1;
+            animation: shine-border 4s linear infinite;
+        }
+
+        .primary-btn::before {
+            content: '';
+            position: absolute;
+            inset: 1px;
+            border-radius: 50px;
+            background: linear-gradient(135deg, var(--primary), #4ab84e);
+            z-index: -1;
+            transition: all 0.4s ease;
+        }
+
+        .secondary-btn {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--light);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .secondary-btn::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            right: -1px;
+            bottom: -1px;
+            border-radius: 50px;
+            background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
+            background-size: 200% 100%;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .primary-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 30px rgba(92, 204, 96, 0.4);
+        }
+
+        .secondary-btn:hover {
+            transform: translateY(-3px);
+            border-color: transparent;
+            box-shadow: 0 10px 25px rgba(92, 204, 96, 0.2);
+        }
+
+        .secondary-btn:hover::before {
+            opacity: 1;
+            animation: shine-border 4s linear infinite;
+        }
+
+        .btn .btn-text {
+            position: relative;
+            z-index: 3;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.4s ease;
+        }
+
+        .btn:hover .btn-text {
+            transform: translateX(5px);
+        }
+
+        @keyframes shine-border {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
+        /* Custom Ripple Effect */
+        .ripple-effect {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.7);
+            transform: scale(0);
+            animation: ripple 0.6s linear;
+            pointer-events: none;
+            width: 100px;
+            height: 100px;
+        }
+            
+        @keyframes ripple {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        /* Legal Page Styles */
+        .legal-hero {
+            padding: 150px 5% 100px;
+            text-align: center;
+            min-height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .legal-hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
+        }
+
+        .legal-hero-bg-circle {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+        }
+
+        .legal-hero-bg-circle:nth-child(1) {
+            width: 400px;
+            height: 400px;
+            background: var(--primary);
+            top: 20%;
+            left: 10%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .legal-hero-bg-circle:nth-child(2) {
+            width: 500px;
+            height: 500px;
+            background: var(--secondary);
+            bottom: 10%;
+            right: 10%;
+            animation: float 10s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(5deg); }
+        }
+
+        .legal-hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 30px;
+            color: white;
+            position: relative;
+            text-wrap: balance;
+            background: linear-gradient(to right, #fff 0%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .legal-hero p {
+            color: var(--gray);
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+        }
+
+        /* Legal Content */
+        .legal-container {
+            display: flex;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 80px 5%;
+            position: relative;
+        }
+
+        .legal-sidebar {
+            width: 280px;
+            position: sticky;
+            top: 120px;
+            height: fit-content;
+            margin-right: 60px;
+            flex-shrink: 0;
+        }
+
+        .legal-sidebar-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .legal-sidebar-nav {
+            list-style: none;
+        }
+
+        .legal-sidebar-item {
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .legal-sidebar-link {
+            color: var(--gray);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            display: block;
+            padding: 10px 15px;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .legal-sidebar-link.active {
+            color: var(--light);
+            background: var(--glass);
+            border: 1px solid var(--light-gray);
+        }
+
+        .legal-sidebar-link:hover:not(.active) {
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .legal-sidebar-link::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 3px;
+            background: var(--primary);
+            border-radius: 3px;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .legal-sidebar-link.active::before,
+        .legal-sidebar-link:hover::before {
+            opacity: 1;
+        }
+
+        .legal-content {
+            flex: 1;
+            background: var(--glass);
+            border: 1px solid var(--light-gray);
+            border-radius: var(--border-radius);
+            padding: 60px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .legal-section {
+            margin-bottom: 80px;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .legal-section.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .legal-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .legal-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: var(--light);
+            position: relative;
+            display: inline-block;
+        }
+
+        .legal-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
+            background-size: 200% 100%;
+            border-radius: 2px;
+            animation: shine-border 4s linear infinite;
+        }
+
+        .legal-section h3 {
+            font-size: 1.8rem;
+            margin: 40px 0 20px;
+            color: var(--light);
+        }
+
+        .legal-section p {
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .legal-section ul {
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+
+        .legal-section li {
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .highlight {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 100px 5% 60px;
+            background: var(--darker);
+            border-top: 1px solid var(--light-gray);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.05;
+        }
+
+        .footer-bg-circle {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+        }
+
+        .footer-bg-circle:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            background: var(--primary);
+            top: 30%;
+            left: 20%;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        .footer-bg-circle:nth-child(2) {
+            width: 400px;
+            height: 400px;
+            background: var(--secondary);
+            bottom: 20%;
+            right: 15%;
+            animation: float 10s ease-in-out infinite;
+        }
+
+        /* Footer Animation - Conveyor Belt */
+        .footer-animation {
+            height: 120px;
+            width: 100%;
+            position: relative;
+            margin-bottom: 50px;
+            overflow: hidden;
+        }
+
+        .conveyor-belt {
+            display: flex;
+            position: absolute;
+            animation: scrollBelt 30s linear infinite;
+        }
+
+        .animal-icon {
+            font-size: 3rem;
+            margin: 0 40px;
+            transition: all 0.3s ease;
+            position: relative;
+            animation: floatIcon 5s ease-in-out infinite;
+        }
+
+        @keyframes scrollBelt {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        @keyframes floatIcon {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(5deg); }
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 50px;
+            max-width: 1200px;
+            margin: 0 auto 80px;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            display: inline-block;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .footer-description {
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--glass);
+            border: 1px solid var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light);
+            transition: var(--transition);
+            font-size: 1.2rem;
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 20px rgba(92, 204, 96, 0.3);
+        }
+
+        .footer-links h3 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            color: var(--light);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+            font-size: 1.1rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 60px;
+            border-top: 1px solid var(--light-gray);
+            color: var(--gray);
+            font-size: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .legal-hero h1 {
+                font-size: 3.5rem;
+            }
+            
+            .legal-container {
+                padding: 60px 5%;
+            }
+            
+            .legal-content {
+                padding: 50px 40px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .legal-hero h1 {
+                font-size: 3rem;
+            }
+            
+            .legal-container {
+                flex-direction: column;
+            }
+            
+            .legal-sidebar {
+                width: 100%;
+                position: static;
+                margin-right: 0;
+                margin-bottom: 40px;
+            }
+            
+            .legal-sidebar-nav {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            
+            .legal-sidebar-item {
+                margin-bottom: 0;
+            }
+            
+            .legal-sidebar-link {
+                padding: 8px 15px;
+            }
+            
+            .legal-section h2 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .glass-nav {
+                flex-direction: column;
+                gap: 20px;
+                padding: 20px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .legal-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .legal-hero p {
+                font-size: 1.2rem;
+            }
+            
+            .legal-content {
+                padding: 40px 30px;
+            }
+            
+            .legal-section h2 {
+                font-size: 2rem;
+            }
+            
+            .legal-section h3 {
+                font-size: 1.6rem;
+            }
+            
+            .footer-animation {
+                height: 80px;
+            }
+            
+            .animal-icon {
+                font-size: 2.5rem;
+                margin: 0 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .legal-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .legal-hero p {
+                font-size: 1rem;
+            }
+            
+            .legal-content {
+                padding: 30px 20px;
+            }
+            
+            .legal-section h2 {
+                font-size: 1.8rem;
+            }
+            
+            .legal-section h3 {
+                font-size: 1.4rem;
+            }
+            
+            .legal-section p, .legal-section li {
+                font-size: 1rem;
+            }
+            
+            .footer-animation {
+                height: 60px;
+            }
+            
+            .animal-icon {
+                font-size: 2rem;
+                margin: 0 15px;
+            }
+        }
+
+
+
+        /* Updated Navigation Styles */
+        .nav-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.glass-nav {
+    transition: transform 0.3s ease;
+}
+
+/* Desktop Navigation */
+@media (min-width: 769px) {
+    .glass-nav.hide-nav {
+        transform: translateY(-100%);
+    }
+    
+    .nav-links {
+        display: flex;
+        gap: 30px;
+        margin: 0 auto;
+    }
+    
+    .mobile-menu-btn,
+    .mobile-join-btn {
+        display: none;
+    }
+    
+    .desktop-join-btn {
+        margin-left: auto;
+    }
+}
+
+/* Mobile Navigation */
+@media (max-width: 768px) {
+    .glass-nav.scrolling {
+        transform: translateY(-100%);
+    }
+    
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 300px;
+        height: 100vh;
+        background: var(--darker);
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 100px 30px 30px;
+        gap: 25px;
+        transition: right 0.3s ease;
+        z-index: 90;
+        border-left: 1px solid var(--light-gray);
+    }
+    
+    .nav-links.active {
+        right: 0;
+    }
+    
+    .desktop-join-btn {
+        display: none;
+    }
+    
+    .mobile-menu-btn {
+        display: flex;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.8rem;
+        cursor: pointer;
+        margin-left: auto;
+        z-index: 100;
+        padding: 10px;
+    }
+    
+    .mobile-menu-btn .close-icon {
+        display: none;
+    }
+    
+    .mobile-menu-btn.active .close-icon {
+        display: block;
+    }
+    
+    .mobile-menu-btn.active .menu-icon {
+        display: none;
+    }
+    
+    .mobile-join-btn {
+        margin-top: 30px;
+        width: 100%;
+    }
+}
+
+/* Active nav link highlighting */
+.nav-links a.active {
+    color: var(--primary);
+}
+
+.nav-links a.active::after {
+    width: 100%;
+}
+
+
+
+.footer {
+    padding: 60px 5% 40px;
+}
+
+.footer-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin-bottom: 50px;
+}
+
+.footer-col {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.footer-links {
+    margin-bottom: 30px;
+}
+
+.footer-links h3 {
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+}
+
+.footer-links ul {
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 12px;
+}
+
+.social-links {
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.footer-animation {
+    height: 80px;
+    margin-bottom: 30px;
+}
+
+.animal-icon {
+    font-size: 2.2rem;
+    margin: 0 20px;
+}
+
+.footer-bottom {
+    padding-top: 40px;
+    font-size: 0.9rem;
+}
+
+/* Tablet and Desktop Styles */
+@media (min-width: 768px) {
+    .footer {
+        padding: 100px 5% 60px;
+    }
+    
+    .footer-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 50px;
+    }
+    
+    .footer-col {
+        text-align: left;
+        margin-bottom: 0;
+    }
+    
+    .footer-links {
+        margin-bottom: 0;
+    }
+    
+    .social-links {
+        justify-content: flex-start;
+    }
+    
+    .footer-animation {
+        height: 120px;
+    }
+    
+    .animal-icon {
+        font-size: 3rem;
+        margin: 0 40px;
+    }
+}
+
+/* Large Desktop Styles */
+@media (min-width: 992px) {
+    .footer-grid {
+        max-width: 1200px;
+        margin: 0 auto 80px;
+    }
+}
+
+
+/* Made with Passion Section - Inspired by huly.io */
+.made-with-love {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 0;
+    font-size: 1.1rem;
+    color: var(--gray);
+    position: relative;
+    overflow: hidden;
+}
+
+.heart-icon {
+    margin: 0 8px;
+    font-size: 1.3rem;
+    display: inline-block;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: pulse 2s infinite;
+}
+
+.passion-text {
+    position: relative;
+    display: inline-block;
+}
+
+.passion-text:first-child::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, var(--primary), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+}
+
+.made-with-love:hover .passion-text:first-child::after {
+    transform: translateX(0);
+}
+
+.passion-text:last-child::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    right: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--primary));
+    transform: translateX(100%);
+    transition: transform 0.6s ease;
+}
+
+.made-with-love:hover .passion-text:last-child::before {
+    transform: translateX(0);
+}
+
+/* Animation for the heart */
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(1); opacity: 0.8; }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .made-with-love {
+        flex-direction: column;
+        gap: 5px;
+        margin: 20px 0;
+    }
+    
+    .heart-icon {
+        margin: 5px 0;
+        transform: rotate(90deg);
+    }
+}
+
+
+
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+}
+
+
+
+
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+        <div class="loading-container">
+            <div class="loading-background"></div>
+            <div class="loading-animals">
+                <div class="loading-animal" style="left: 10%; animation-delay: 0s;">🐄</div>
+                <div class="loading-animal" style="left: 30%; animation-delay: 2s;">🐖</div>
+                <div class="loading-animal" style="left: 50%; animation-delay: 4s;">🐓</div>
+                <div class="loading-animal" style="left: 70%; animation-delay: 6s;">🐑</div>
+                <div class="loading-animal" style="left: 90%; animation-delay: 8s;">🐟</div>
+            </div>
+            <div class="loading-content">
+                <div class="loading-message">Building a kinder world for <span class="changing-text">animals</span></div>
+                <div class="loading-spinner"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Particle Background -->
+    <div id="particles-js"></div>
+    
+    <!-- Navigation -->
+    <nav class="glass-nav">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <span class="logo-animate">AnimalSave<span class="india">India</span></span>
+            </a>
+            
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars menu-icon"></i>
+                <i class="fas fa-times close-icon"></i>
+            </button>
+            
+            <div class="nav-links">
+                <a href="#" class="active">Home</a>
+                <a href="/OurStory.html">Our Story</a>
+                <a href="/whygovegan.html">Why Go Vegan</a>
+                <a href="/contacts.html">Contact</a>
+                <button class="btn primary-btn mobile-join-btn" onclick="window.location.href='/join.html'">
+                    <span class="btn-text">Join Us Now</span>
+                </button>
+            </div>
+            
+            <div class="desktop-join-btn">
+                <button class="btn primary-btn" >
+                    <span class="btn-text">Join Us Now</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+
+    <!-- Hero Section -->
+    <section class="legal-hero">
+        <div class="legal-hero-bg">
+            <div class="legal-hero-bg-circle"></div>
+            <div class="legal-hero-bg-circle"></div>
+        </div>
+        <h1>Terms of Service</h1>
+        <p>Last updated: 2025</p>
+    </section>
+
+    <!-- Legal Content -->
+    <div class="legal-container">
+        <aside class="legal-sidebar">
+            <h2 class="legal-sidebar-title">Terms of Service</h2>
+            <nav class="legal-sidebar-nav">
+                <li class="legal-sidebar-item">
+                    <a href="#service" class="legal-sidebar-link active">1. The Service</a>
+                </li>
+                <li class="legal-sidebar-item">
+                    <a href="#apps" class="legal-sidebar-link">2. Apps</a>
+                </li>
+                <li class="legal-sidebar-item">
+                    <a href="#content" class="legal-sidebar-link">3. User Content</a>
+                </li>
+                <li class="legal-sidebar-item">
+                    <a href="#dmca" class="legal-sidebar-link">4. DMCA Notice</a>
+                </li>
+                <li class="legal-sidebar-item">
+                    <a href="#rights" class="legal-sidebar-link">5. Our Rights</a>
+                </li>
+                <li class="legal-sidebar-item">
+                    <a href="#paid" class="legal-sidebar-link">6. Paid Services</a>
+                </li>
+                <li class="legal-sidebar-item">
+                    <a href="#privacy" class="legal-sidebar-link">7. Privacy</a>
+                </li>
+                <li class="legal-sidebar-item">
+                    <a href="#security" class="legal-sidebar-link">8. Security</a>
+                </li>
+                <li class="legal-sidebar-item">
+                    <a href="#third-party" class="legal-sidebar-link">9. Third-Party</a>
+                </li>
+                <li class="legal-sidebar-item">
+                    <a href="#indemnity" class="legal-sidebar-link">10. Indemnity</a>
+                </li>
+                <li class="legal-sidebar-item">
+                    <a href="#warranty" class="legal-sidebar-link">11. No Warranty</a>
+                </li>
+                <li class="legal-sidebar-item">
+                    <a href="#liability" class="legal-sidebar-link">12. Liability</a>
+                </li>
+                <li class="legal-sidebar-item">
+                    <a href="#governing" class="legal-sidebar-link">13. Governing Law</a>
+                </li>
+                <li class="legal-sidebar-item">
+                    <a href="#general" class="legal-sidebar-link">14. General</a>
+                </li>
+            </nav>
+        </aside>
+
+        <main class="legal-content">
+            <section id="service" class="legal-section active">
+                <h2>1. The Service</h2>
+                <p>Welcome to AnimalSaveIndia ("we," "our," or "us"). These Terms of Service ("Terms") govern your access to and use of our website, mobile applications, and services (collectively, the "Service"). By accessing or using the Service, you agree to be bound by these Terms.</p>
+                
+                <h3>1.1 Eligibility</h3>
+                <p>You must be at least 13 years old to use the Service. If you are under 18, you may only use the Service with the consent of a parent or legal guardian.</p>
+                
+                <h3>1.2 Service Description</h3>
+                <p>AnimalSaveIndia provides resources, information, and community support for individuals interested in animal rights, veganism, and compassionate living. Our services include:</p>
+                <ul>
+                    <li>Educational content about animal welfare</li>
+                    <li>Vegan lifestyle resources and guides</li>
+                    <li>Community forums and discussion boards</li>
+                    <li>Event listings and volunteer opportunities</li>
+                    <li>Mobile applications supporting these services</li>
+                </ul>
+                
+                <h3>1.3 Changes to Service</h3>
+                <p>We reserve the right to modify or discontinue, temporarily or permanently, the Service (or any part thereof) with or without notice. We shall not be liable to you or any third party for any modification, suspension, or discontinuance of the Service.</p>
+                
+                <h3>1.4 International Use</h3>
+                <p>The Service is controlled and operated from India. We make no representations that the Service is appropriate or available for use in other locations. Those who access or use the Service from other jurisdictions do so at their own volition and are responsible for compliance with local laws.</p>
+            </section>
+
+            <section id="apps" class="legal-section">
+                <h2>2. Apps</h2>
+                <h3>2.1 Web Applications</h3>
+                <p>To use an AnimalSaveIndia Web application ("Website"), you must have a compatible Browser. We do not warrant that website will be compatible with your browser , we suggest to use latest version of chrome browser .</p>
+                
+                <h3>2.2 Web License</h3>
+                <p>Subject to your compliance with these Terms, we grant you a limited, non-exclusive, non-transferable license to:</p>
+                <ul>
+                    <li>View, and use the Website for your understanding about animal saving</li>
+                    <li>Access and use the Service through the App as permitted by these Terms</li>
+                </ul>
+                
+                <h3>2.3 Restrictions</h3>
+                <p>You may not:</p>
+                <ul>
+                    <li>Modify, disassemble, decompile, or reverse engineer our webiste</li>
+                    <li>Rent, lease, loan, resell, sublicense, distribute, or otherwise transfer our webiste</li>
+                    <li>Make any copies of the webiste</li>
+                    <li>Remove, circumvent, disable, damage, or interfere with security features of our webiste</li>
+                    <li>Delete the copyright or other proprietary rights notices on our webiste</li>
+                </ul>
+                
+                <h3>2.4 Updates</h3>
+                <p>We may from time to time issue upgraded versions of the webiste and may automatically upgrade the version you are using. You consent to such automatic upgrading and agree that these Terms will apply to all such upgrades.</p>
+            </section>
+
+            <section id="content" class="legal-section">
+                <h2>3. User Content</h2>
+                <h3>3.1 Definition</h3>
+                <p>"User Content" means any content, materials, or information (including text, images, videos, and other media) that you upload, post, submit, or otherwise make available through the Service.</p>
+                
+                <h3>3.2 Your Responsibility</h3>
+                <p>You are solely responsible for your User Content and the consequences of posting or publishing it. You represent and warrant that:</p>
+                <ul>
+                    <li>You own or have the necessary rights to post the User Content</li>
+                    <li>The User Content does not violate any laws or these Terms</li>
+                    <li>The User Content does not infringe any third-party rights</li>
+                </ul>
+                
+                <h3>3.3 Prohibited Content</h3>
+                <p>You agree not to post User Content that:</p>
+                <ul>
+                    <li>Is unlawful, harmful, threatening, abusive, harassing, defamatory, or otherwise objectionable</li>
+                    <li>Promotes violence or discrimination against any individual or group</li>
+                    <li>Contains nudity, pornography, or sexually explicit material</li>
+                    <li>Contains false or misleading information</li>
+                    <li>Violates any third-party rights, including copyright, trademark, or privacy rights</li>
+                </ul>
+                
+                <h3>3.4 License to Us</h3>
+                <p>By posting User Content, you grant us a worldwide, non-exclusive, royalty-free license to use, reproduce, modify, adapt, publish, and display the User Content in connection with the Service.</p>
+            </section>
+
+            <section id="dmca" class="legal-section">
+                <h2>4. DMCA Notice</h2>
+                <p>We respect intellectual property rights and expect our users to do the same. If you believe your copyright has been infringed, please send a notice containing:</p>
+                <ul>
+                    <li>Your contact information</li>
+                    <li>Identification of the copyrighted work</li>
+                    <li>Identification of the infringing material</li>
+                    <li>A statement of good faith belief</li>
+                    <li>A statement under penalty of perjury</li>
+                    <li>Your signature</li>
+                </ul>
+                <p>Send notices to our designated agent at <span class="highlight">legal@animalsaveindia.org</span>.</p>
+            </section>
+
+            <section id="rights" class="legal-section">
+                <h2>5. Our Proprietary Rights</h2>
+                <p>The Service and all materials therein (excluding User Content) are our property and protected by copyright, trademark, and other laws. You agree not to use our trademarks without prior written permission.</p>
+                
+                <h3>5.1 Feedback</h3>
+                <p>Any feedback or suggestions you provide regarding the Service may be used by us without obligation to you.</p>
+            </section>
+
+            <section id="paid" class="legal-section">
+                <h2>6. Paid Services</h2>
+                <h3>6.1 Donations</h3>
+                <p>AnimalSaveIndia accepts donations to support our mission. All donations are final and non-refundable.</p>
+                
+                <h3>6.2 Merchandise</h3>
+                <p>We may offer merchandise for sale through the Service. Additional terms will apply to such purchases.</p>
+            </section>
+
+            <section id="privacy" class="legal-section">
+                <h2>7. Privacy</h2>
+                <p>Your privacy is important to us. Our Privacy Policy explains how we collect, use, and share information about you. By using the Service, you agree to our collection and use of information as described in the Privacy Policy.</p>
+            </section>
+
+            <section id="security" class="legal-section">
+                <h2>8. Security</h2>
+                <p>We implement security measures to protect your information, but cannot guarantee absolute security. You are responsible for maintaining the confidentiality of your account credentials.</p>
+            </section>
+
+            <section id="third-party" class="legal-section">
+                <h2>9. Third-Party Links and Information</h2>
+                <p>The Service may contain links to third-party websites or resources. We are not responsible for the content or practices of any third parties. You acknowledge sole responsibility for your use of any third-party websites or resources.</p>
+            </section>
+
+            <section id="indemnity" class="legal-section">
+                <h2>10. Release and Indemnity</h2>
+                <p>You agree to defend, indemnify, and hold harmless AnimalSaveIndia from any claims, liabilities, damages, and expenses arising from:</p>
+                <ul>
+                    <li>Your use of the Service</li>
+                    <li>Your User Content</li>
+                    <li>Your violation of these Terms</li>
+                </ul>
+            </section>
+
+            <section id="warranty" class="legal-section">
+                <h2>11. No Warranty</h2>
+                <p>The Service is provided "as is" without warranty of any kind. We disclaim all warranties, express or implied, including warranties of merchantability, fitness for a particular purpose, and non-infringement.</p>
+            </section>
+
+            <section id="liability" class="legal-section">
+                <h2>12. Limitation of Liability</h2>
+                <p>To the maximum extent permitted by law, AnimalSaveIndia shall not be liable for any indirect, incidental, special, or consequential damages arising from your use of the Service.</p>
+            </section>
+
+            <section id="governing" class="legal-section">
+                <h2>13. Governing Law, Arbitration</h2>
+                <p>These Terms shall be governed by Indian law. Any disputes shall be resolved through binding arbitration in Mumbai, India.</p>
+            </section>
+
+            <section id="general" class="legal-section">
+                <h2>14. General</h2>
+                <h3>14.1 Entire Agreement</h3>
+                <p>These Terms constitute the entire agreement between you and AnimalSaveIndia regarding the Service.</p>
+                
+                <h3>14.2 Changes to Terms</h3>
+                <p>We may modify these Terms at any time. Continued use of the Service constitutes acceptance of the modified Terms.</p>
+                
+                <h3>14.3 Contact</h3>
+                <p>For questions about these Terms, contact us at <span class="highlight">legal@animalsaveindia.org</span>.</p>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-bg">
+            <div class="footer-bg-circle"></div>
+            <div class="footer-bg-circle"></div>
+        </div>
+        
+        <div class="footer-animation">
+            <div class="conveyor-belt">
+                <div class="animal-icon">🐄</div>
+                <div class="animal-icon">🐖</div>
+                <div class="animal-icon">🐓</div>
+                <div class="animal-icon">🐑</div>
+                <div class="animal-icon">🐟</div>
+                <div class="animal-icon">🐄</div>
+                <div class="animal-icon">🐖</div>
+                <div class="animal-icon">🐓</div>
+                <div class="animal-icon">🐑</div>
+                <div class="animal-icon">🐟</div>
+            </div>
+        </div>
+        
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="footer-logo">AnimalSaveIndia</div>
+                <p class="footer-description">Compassionate living for a kinder world. Join our movement to protect animals and promote veganism across India.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <div class="footer-links">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="/join.html#events">Events</a></li>
+                        <li><a href="#">Animal Rights</a></li>
+                        <li><a href="#">Recipes</a></li>
+                        <li><a href="/ourstory.html#documentary-section">Documentaries</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-col">
+                <div class="footer-links">
+                    <h3>Our Compassion's</h3>
+                    <ul>
+                        <li><a href="/index.html">Home</a></li>
+                        <li><a href="/OurStory.html">Our Story</a></li>
+                        <li><a href="/whygovegan.html">Why Go Vegan</a></li>
+                        <li><a href="/contacts.html">Contacts</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-col">
+                <div class="footer-links">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="/PrivacyPolicy.html">Privacy Policy</a></li>
+                        <li><a href="/TermsofService.html">Terms of Service</a></li>
+                        <li><a href="/contacts.html">Contact</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 AnimalSaveIndia. All rights reserved.</p>
+        </div>
+
+        <div class="made-with-love">
+            <span class="passion-text">Made with</span>
+            <span class="heart-icon">❤️</span>
+            <span class="passion-text">by ComputeratePiyush</span>
+        </div>
+        
+    </footer>
+    
+
+    <script>
+const _0x40776a=_0x37f5;(function(_0x1cfc4d,_0x3b1ccc){const _0xa1cd7=_0x37f5,_0x5a631a=_0x1cfc4d();while(!![]){try{const _0x1b9f18=-parseInt(_0xa1cd7(0x1e6))/0x1*(-parseInt(_0xa1cd7(0x1c4))/0x2)+parseInt(_0xa1cd7(0x1f8))/0x3+parseInt(_0xa1cd7(0x1b8))/0x4*(parseInt(_0xa1cd7(0x1f1))/0x5)+-parseInt(_0xa1cd7(0x223))/0x6*(parseInt(_0xa1cd7(0x1f3))/0x7)+-parseInt(_0xa1cd7(0x1eb))/0x8*(-parseInt(_0xa1cd7(0x1c7))/0x9)+parseInt(_0xa1cd7(0x216))/0xa*(parseInt(_0xa1cd7(0x221))/0xb)+-parseInt(_0xa1cd7(0x1fd))/0xc*(parseInt(_0xa1cd7(0x1c5))/0xd);if(_0x1b9f18===_0x3b1ccc)break;else _0x5a631a['push'](_0x5a631a['shift']());}catch(_0x13a114){_0x5a631a['push'](_0x5a631a['shift']());}}}(_0x2af0,0xbf2ea));const loadingMessages=[_0x40776a(0x1de),'the\x20planet',_0x40776a(0x21f),_0x40776a(0x1e8),_0x40776a(0x220)],loadingScreen=document[_0x40776a(0x1d2)](_0x40776a(0x225)),loadingMessage=document[_0x40776a(0x1d2)](_0x40776a(0x219)),changingText=document[_0x40776a(0x1d2)](_0x40776a(0x207)),loadingSpinner=document['querySelector']('.loading-spinner'),loadingAnimals=document[_0x40776a(0x205)](_0x40776a(0x1e2)),navLinksList=document[_0x40776a(0x205)]('.nav-links\x20a'),buttons=document[_0x40776a(0x205)](_0x40776a(0x1ed)),legalSections=document[_0x40776a(0x205)](_0x40776a(0x1e4)),legalSidebarLinks=document[_0x40776a(0x205)](_0x40776a(0x1cb)),indiaText=document['querySelector'](_0x40776a(0x206)),particlesContainer=document[_0x40776a(0x1e7)]('particles-js'),conveyorBelt=document[_0x40776a(0x1d2)](_0x40776a(0x20b)),animalIcons=document[_0x40776a(0x205)](_0x40776a(0x208));function showLoadingMessage(){const _0x7a0e73=_0x40776a;let _0x46c99d=0x0;const _0x55a89f=()=>{const _0x10e7b0=_0x37f5;changingText[_0x10e7b0(0x21d)][_0x10e7b0(0x215)]='0',setTimeout(()=>{const _0x3d1708=_0x10e7b0;changingText['textContent']=loadingMessages[_0x46c99d],changingText[_0x3d1708(0x21d)][_0x3d1708(0x215)]='1',_0x46c99d=(_0x46c99d+0x1)%loadingMessages[_0x3d1708(0x20c)];},0x1f4);};_0x55a89f(),setInterval(_0x55a89f,0xbb8);let _0xc41c02=0x0;const _0x26ac7e=setInterval(()=>{const _0x1b1f5e=_0x37f5;_0xc41c02+=0xa,loadingSpinner['style'][_0x1b1f5e(0x211)]=_0x1b1f5e(0x1ce)+_0xc41c02+_0x1b1f5e(0x1ba);const _0x4e3d5a=Math['abs'](Math[_0x1b1f5e(0x1c0)](_0xc41c02*Math['PI']/0xb4))*0.5+0.5;loadingSpinner[_0x1b1f5e(0x21d)][_0x1b1f5e(0x1d9)]='0\x200\x20'+_0x4e3d5a*0xf+_0x1b1f5e(0x1ef)+_0x4e3d5a*0.5+')';},0x32);loadingAnimals[_0x7a0e73(0x20a)]((_0x20f8d2,_0x5088a6)=>{const _0x333d30=_0x7a0e73;_0x20f8d2['style'][_0x333d30(0x1bd)]=_0x5088a6*0x2+'s',_0x20f8d2['style'][_0x333d30(0x218)]=0xf+_0x5088a6*0x3+'s',_0x20f8d2[_0x333d30(0x21d)][_0x333d30(0x215)]=_0x333d30(0x1da);}),setTimeout(()=>{const _0x56b55a=_0x7a0e73;loadingScreen[_0x56b55a(0x21d)][_0x56b55a(0x215)]='0',loadingScreen['style'][_0x56b55a(0x1f2)]=_0x56b55a(0x21b),setTimeout(()=>{const _0xe6f0be=_0x56b55a;loadingScreen['style'][_0xe6f0be(0x1ea)]=_0xe6f0be(0x210),clearInterval(_0x26ac7e),initAnimations();},0x320);},0x3e8);}function animateIndiaFlag(){const _0x1bd394=_0x40776a;if(!indiaText)return;let _0x17da63=0x0;const _0x39a323=[_0x1bd394(0x1cf),_0x1bd394(0x1dd),_0x1bd394(0x1f9)];let _0x18ad07=0x0;setInterval(()=>{const _0x561d89=_0x1bd394;_0x17da63+=0.15;const _0x3e2de5=Math['sin'](_0x17da63)*0x8;indiaText['style'][_0x561d89(0x211)]=_0x561d89(0x1fc)+_0x3e2de5+_0x561d89(0x21a);if(_0x17da63%(Math['PI']*0x2)<0.1){_0x18ad07=(_0x18ad07+0x1)%_0x39a323['length'];const _0x28756b=(_0x18ad07+0x1)%_0x39a323[_0x561d89(0x20c)];indiaText[_0x561d89(0x21d)][_0x561d89(0x1d4)]=_0x561d89(0x217)+_0x39a323[_0x18ad07]+',\x20'+_0x39a323[_0x28756b]+')',indiaText['style'][_0x561d89(0x203)]=_0x561d89(0x1df),indiaText['style'][_0x561d89(0x1b7)]='text';}},0x32);}function setupButtonEffects(){buttons['forEach'](_0x3bcbb7=>{const _0x50a747=_0x37f5;_0x3bcbb7[_0x50a747(0x1c6)](_0x50a747(0x1b9),_0x4ac8a0=>{const _0x370d73=_0x50a747,_0x58fa3b=_0x3bcbb7[_0x370d73(0x1cd)](),_0x3fc0af=_0x4ac8a0[_0x370d73(0x1f4)]-_0x58fa3b[_0x370d73(0x1e9)],_0x155959=_0x4ac8a0[_0x370d73(0x1c3)]-_0x58fa3b[_0x370d73(0x21c)],_0xe62663=_0x58fa3b[_0x370d73(0x1f0)]/0x2,_0x1bead4=_0x58fa3b[_0x370d73(0x20d)]/0x2,_0x31fbd3=(_0x3fc0af-_0xe62663)/0x5,_0x4f5a44=(_0x155959-_0x1bead4)/0x5;_0x3bcbb7[_0x370d73(0x21d)][_0x370d73(0x211)]=_0x370d73(0x213)+_0x31fbd3+_0x370d73(0x1c8)+_0x4f5a44+_0x370d73(0x1c2);}),_0x3bcbb7['addEventListener']('mouseleave',()=>{const _0x519c78=_0x50a747;_0x3bcbb7[_0x519c78(0x21d)][_0x519c78(0x211)]=_0x519c78(0x1dc);}),_0x3bcbb7[_0x50a747(0x1c6)](_0x50a747(0x1ff),function(_0x19f03d){const _0x153246=_0x50a747,_0x362078=_0x3bcbb7[_0x153246(0x1cd)](),_0x342054=_0x19f03d[_0x153246(0x1f4)]-_0x362078[_0x153246(0x1e9)],_0xf6ca00=_0x19f03d[_0x153246(0x1c3)]-_0x362078[_0x153246(0x21c)],_0xcff1cd=document['createElement'](_0x153246(0x1ca));_0xcff1cd['classList'][_0x153246(0x1cc)](_0x153246(0x1e0)),_0xcff1cd[_0x153246(0x21d)][_0x153246(0x1e9)]=_0x342054+'px',_0xcff1cd['style'][_0x153246(0x21c)]=_0xf6ca00+'px',this[_0x153246(0x1c9)](_0xcff1cd),setTimeout(()=>{_0xcff1cd['remove']();},0x258);});});}function setupLegalNavigation(){const _0x29c3cf=_0x40776a,_0x246886=document[_0x29c3cf(0x205)]('.legal-sidebar-link'),_0x2c50f3=document[_0x29c3cf(0x205)](_0x29c3cf(0x1e4));_0x246886[_0x29c3cf(0x20a)](_0xf46d93=>{const _0x1b572a=_0x29c3cf;_0xf46d93[_0x1b572a(0x1c6)](_0x1b572a(0x1ff),_0x4dfe3a=>{const _0x39a7bc=_0x1b572a;_0x4dfe3a[_0x39a7bc(0x1d8)]();const _0x21d1e8=_0xf46d93[_0x39a7bc(0x214)](_0x39a7bc(0x200)),_0x23325b=document['querySelector'](_0x21d1e8);_0x23325b&&(_0x246886['forEach'](_0x79a34a=>_0x79a34a['classList']['remove'](_0x39a7bc(0x20f))),_0xf46d93[_0x39a7bc(0x1d7)]['add'](_0x39a7bc(0x20f)),window['scrollTo']({'top':_0x23325b[_0x39a7bc(0x222)]-0x64,'behavior':_0x39a7bc(0x1d1)}),_0x2c50f3[_0x39a7bc(0x20a)](_0x520988=>_0x520988[_0x39a7bc(0x1d7)][_0x39a7bc(0x1e1)](_0x39a7bc(0x20f))),_0x23325b['classList']['add'](_0x39a7bc(0x20f)));});}),window[_0x29c3cf(0x1c6)](_0x29c3cf(0x202),()=>{const _0x3502c1=_0x29c3cf;let _0x56971b='';_0x2c50f3[_0x3502c1(0x20a)](_0x50280c=>{const _0x583f19=_0x3502c1,_0x2531f6=_0x50280c['offsetTop'],_0x4d10d4=_0x50280c[_0x583f19(0x1fe)];window['scrollY']>=_0x2531f6-0xc8&&window[_0x583f19(0x224)]<_0x2531f6+_0x4d10d4-0xc8&&(_0x56971b='#'+_0x50280c['getAttribute']('id'));}),_0x246886[_0x3502c1(0x20a)](_0x490d25=>{const _0x509efd=_0x3502c1;_0x490d25[_0x509efd(0x1d7)][_0x509efd(0x1e1)]('active'),_0x490d25[_0x509efd(0x214)]('href')===_0x56971b&&_0x490d25[_0x509efd(0x1d7)][_0x509efd(0x1cc)]('active');});});}function setupSectionReveal(){const _0x33380a=_0x40776a,_0x1d7221=new IntersectionObserver(_0x2670d2=>{const _0x41aa94=_0x37f5;_0x2670d2[_0x41aa94(0x20a)](_0x1b55b5=>{const _0x4ed3ee=_0x41aa94;_0x1b55b5['isIntersecting']&&_0x1b55b5[_0x4ed3ee(0x1bf)][_0x4ed3ee(0x1d7)][_0x4ed3ee(0x1cc)](_0x4ed3ee(0x20f));});},{'threshold':0.1});legalSections[_0x33380a(0x20a)](_0x56161d=>{const _0x541a55=_0x33380a;_0x1d7221[_0x541a55(0x21e)](_0x56161d);});}function _0x37f5(_0x40ac58,_0x5d5f33){const _0x2af0e5=_0x2af0();return _0x37f5=function(_0x37f5df,_0x376d66){_0x37f5df=_0x37f5df-0x1b7;let _0x477389=_0x2af0e5[_0x37f5df];return _0x477389;},_0x37f5(_0x40ac58,_0x5d5f33);}function initParticles(){const _0xabbe2f=_0x40776a;typeof particlesJS!==_0xabbe2f(0x1e5)&&particlesJS(_0xabbe2f(0x1be),{'particles':{'number':{'value':0x50},'color':{'value':_0xabbe2f(0x201)},'shape':{'type':'circle'},'opacity':{'value':0.5,'random':!![]},'size':{'value':0x3,'random':!![]},'line_linked':{'enable':!![],'distance':0x96,'color':_0xabbe2f(0x201),'opacity':0.3,'width':0x1},'move':{'enable':!![],'speed':0x2,'direction':_0xabbe2f(0x210),'random':!![],'straight':![],'out_mode':_0xabbe2f(0x1e3),'bounce':![]}},'interactivity':{'detect_on':_0xabbe2f(0x1fb),'events':{'onhover':{'enable':!![],'mode':_0xabbe2f(0x1d5)},'onclick':{'enable':!![],'mode':_0xabbe2f(0x204)}}}});}function setupFooterAnimation(){const _0x538c9a=_0x40776a;if(!conveyorBelt)return;animalIcons[_0x538c9a(0x20a)](_0x58e107=>{const _0x3224b3=_0x538c9a;_0x58e107[_0x3224b3(0x1c6)](_0x3224b3(0x1bc),()=>{const _0x1afd56=_0x3224b3;_0x58e107[_0x1afd56(0x21d)][_0x1afd56(0x211)]=_0x1afd56(0x1d3),_0x58e107[_0x1afd56(0x21d)][_0x1afd56(0x1ee)]=_0x1afd56(0x210);}),_0x58e107[_0x3224b3(0x1c6)](_0x3224b3(0x1d0),()=>{const _0x1d96dc=_0x3224b3;_0x58e107[_0x1d96dc(0x21d)][_0x1d96dc(0x211)]='',_0x58e107[_0x1d96dc(0x21d)][_0x1d96dc(0x1ee)]=_0x1d96dc(0x1d6);});});}function initAnimations(){animateIndiaFlag(),setupButtonEffects(),setupLegalNavigation(),setupSectionReveal(),setupFooterAnimation(),initParticles();}document[_0x40776a(0x1c6)](_0x40776a(0x1ec),()=>{showLoadingMessage();});let lastScroll=0x0;const navbar=document[_0x40776a(0x1d2)]('.glass-nav'),mobileMenuBtn=document[_0x40776a(0x1d2)](_0x40776a(0x212)),navLinks=document[_0x40776a(0x1d2)]('.nav-links'),navItems=document['querySelectorAll']('.nav-links\x20a'),isMobile=window[_0x40776a(0x209)](_0x40776a(0x1fa))['matches'];mobileMenuBtn[_0x40776a(0x1c6)](_0x40776a(0x1ff),()=>{const _0x1641e2=_0x40776a;mobileMenuBtn['classList'][_0x1641e2(0x1f5)](_0x1641e2(0x20f)),navLinks[_0x1641e2(0x1d7)][_0x1641e2(0x1f5)](_0x1641e2(0x20f));}),navItems[_0x40776a(0x20a)](_0x1d7806=>{const _0x190115=_0x40776a;_0x1d7806[_0x190115(0x1c6)](_0x190115(0x1ff),()=>{const _0x3d1eda=_0x190115;isMobile&&(mobileMenuBtn[_0x3d1eda(0x1d7)]['remove'](_0x3d1eda(0x20f)),navLinks[_0x3d1eda(0x1d7)][_0x3d1eda(0x1e1)](_0x3d1eda(0x20f)));});}),window[_0x40776a(0x1c6)]('scroll',()=>{const _0x47daf2=_0x40776a,_0x48ad02=window[_0x47daf2(0x1bb)];if(isMobile)_0x48ad02<=0x0?navbar[_0x47daf2(0x1d7)][_0x47daf2(0x1e1)](_0x47daf2(0x1f6)):navbar[_0x47daf2(0x1d7)][_0x47daf2(0x1cc)](_0x47daf2(0x1f6));else{if(_0x48ad02<=0x0)navbar[_0x47daf2(0x1d7)]['remove'](_0x47daf2(0x20e));else{if(_0x48ad02>lastScroll&&!navbar[_0x47daf2(0x1d7)][_0x47daf2(0x1c1)]('hide-nav'))navbar[_0x47daf2(0x1d7)]['add']('hide-nav');else _0x48ad02<lastScroll&&navbar[_0x47daf2(0x1d7)][_0x47daf2(0x1c1)](_0x47daf2(0x20e))&&navbar[_0x47daf2(0x1d7)][_0x47daf2(0x1e1)](_0x47daf2(0x20e));}}lastScroll=_0x48ad02;const _0x1e55fc=document[_0x47daf2(0x205)](_0x47daf2(0x1f7));let _0x56a14c='';_0x1e55fc[_0x47daf2(0x20a)](_0x1ac5c4=>{const _0x4546b0=_0x47daf2,_0x5cdc36=_0x1ac5c4[_0x4546b0(0x222)],_0x2da83c=_0x1ac5c4['clientHeight'];pageYOffset>=_0x5cdc36-0x12c&&(_0x56a14c=_0x1ac5c4[_0x4546b0(0x214)]('id'));}),navItems[_0x47daf2(0x20a)](_0x4959af=>{const _0x450b4b=_0x47daf2;_0x4959af['classList'][_0x450b4b(0x1e1)](_0x450b4b(0x20f)),_0x4959af['getAttribute'](_0x450b4b(0x200))==='#'+_0x56a14c&&_0x4959af[_0x450b4b(0x1d7)][_0x450b4b(0x1cc)](_0x450b4b(0x20f));});}),document[_0x40776a(0x1c6)]('contextmenu',_0x5b117f=>_0x5b117f[_0x40776a(0x1d8)]()),document['onkeydown']=function(_0x1c6a29){const _0x1448de=_0x40776a;if(_0x1c6a29['ctrlKey']&&(_0x1c6a29[_0x1448de(0x1db)]==='u'||_0x1c6a29[_0x1448de(0x1db)]==='s'||_0x1c6a29[_0x1448de(0x1db)]==='i'||_0x1c6a29[_0x1448de(0x1db)]==='j'))return![];};function _0x2af0(){const _0x54f8bb=['particles-js','target','sin','contains','px,\x200)','clientY','6PyvHDH','13waKCJt','addEventListener','9230418HPrWSw','px,\x20','appendChild','span','.legal-sidebar-link','add','getBoundingClientRect','rotate(','#FF9933','mouseleave','smooth','querySelector','scale(1.2)\x20rotate(10deg)','background','repulse','floatIcon\x205s\x20ease-in-out\x20infinite','classList','preventDefault','boxShadow','0.3','key','translate3d(0,\x200,\x200)','#FFFFFF','animals','text','ripple-effect','remove','.loading-animal','out','.legal-section','undefined','399771iRSiBS','getElementById','all\x20beings','left','display','8uASIzR','DOMContentLoaded','.btn','animation','px\x20rgba(92,\x20204,\x2096,\x20','width','951025rPWqSw','backdropFilter','21bSRnyf','clientX','toggle','scrolling','section','4419435zpuvoF','#138808','(max-width:\x20768px)','canvas','translateY(','33013644OssXxC','clientHeight','click','href','#5CCC60','scroll','webkitBackgroundClip','push','querySelectorAll','.india','.changing-text','.animal-icon','matchMedia','forEach','.conveyor-belt','length','height','hide-nav','active','none','transform','.mobile-menu-btn','translate3d(','getAttribute','opacity','14090sIduYq','linear-gradient(to\x20right,\x20','animationDuration','.loading-message','px)','blur(20px)','top','style','observe','future\x20generations','compassion','4059bHPRMw','offsetTop','2128344CHDHWW','scrollY','.loading-screen','backgroundClip','8LZwxwp','mousemove','deg)','pageYOffset','mouseenter','animationDelay'];_0x2af0=function(){return _0x54f8bb;};return _0x2af0();}
+
+    </script>
+</body>
+</html>

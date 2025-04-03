@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Our Movement | AnimalSaveIndia</title>
+    <meta name="description" content="Join AnimalSaveIndia's compassionate community working to end animal suffering through veganism and activism in India.">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <style>
+        :root {
+            --primary: #5CCC60;
+            --primary-light: rgba(92, 204, 96, 0.2);
+            --secondary: #8BC34A;
+            --accent: #AED581;
+            --dark: #121212;
+            --darker: #0A0A0A;
+            --light: #FFFFFF;
+            --gray: #9E9E9E;
+            --light-gray: rgba(255, 255, 255, 0.1);
+            --glass: rgba(30, 30, 30, 0.6);
+            --border-radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --flag-orange: #FF9933;
+            --flag-white: #FFFFFF;
+            --flag-green: #138808;
+            --flag-blue: #000080;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Particle Background */
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.4;
+        }
+
+        /* Navigation */
+        .glass-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: var(--glass);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--light-gray);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .nav-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-animate {
+            position: relative;
+        }
+
+        .logo-animate .india {
+            background: linear-gradient(to right, var(--flag-orange), var(--flag-white), var(--flag-green));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            display: inline-block;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            position: relative;
+            padding: 8px 0;
+            color: var(--light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* Buttons */
+        .btn {
+            position: relative;
+            overflow: hidden;
+            border: none;
+            padding: 16px 36px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            z-index: 1;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transform-style: preserve-3d;
+            perspective: 500px;
+            will-change: transform;
+        }
+
+        .primary-btn {
+            background: linear-gradient(135deg, var(--primary), #4ab84e);
+            color: white;
+            box-shadow: 0 8px 20px rgba(92, 204, 96, 0.3);
+            border: none;
+            position: relative;
+        }
+
+        .primary-btn::after {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 50px;
+            background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
+            background-size: 200% 100%;
+            z-index: -2;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .primary-btn:hover::after {
+            opacity: 1;
+            animation: shine-border 4s linear infinite;
+        }
+
+        .primary-btn::before {
+            content: '';
+            position: absolute;
+            inset: 1px;
+            border-radius: 50px;
+            background: linear-gradient(135deg, var(--primary), #4ab84e);
+            z-index: -1;
+            transition: all 0.4s ease;
+        }
+
+        .primary-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 30px rgba(92, 204, 96, 0.4);
+        }
+
+        .btn .btn-text {
+            position: relative;
+            z-index: 3;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.4s ease;
+        }
+
+        .btn:hover .btn-text {
+            transform: translateX(5px);
+        }
+
+        @keyframes shine-border {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
+        /* Ripple Effect */
+        .ripple-effect {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.7);
+            transform: scale(0);
+            animation: ripple 0.6s linear;
+            pointer-events: none;
+            width: 100px;
+            height: 100px;
+        }
+            
+        @keyframes ripple {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        /* Content Section */
+        .join-container {
+            max-width: 1000px;
+            margin: 100px auto;
+            padding: 40px 20px;
+        }
+
+        /* Hero Section */
+        .join-hero {
+            text-align: center;
+            margin-bottom: 80px;
+            position: relative;
+        }
+
+        .join-heading {
+            font-size: 3.5rem;
+            margin-bottom: 30px;
+            background: linear-gradient(to right, var(--light), var(--primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+        }
+
+        .join-subheading {
+            max-width: 700px;
+            margin: 0 auto 40px;
+            font-size: 1.3rem;
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+         
+          /* Footer */
+          .footer {
+            padding: 100px 5% 60px;
+            background: var(--darker);
+            border-top: 1px solid var(--light-gray);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.05;
+        }
+
+        .footer-bg-circle {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+        }
+
+        .footer-bg-circle:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            background: var(--primary);
+            top: 30%;
+            left: 20%;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        .footer-bg-circle:nth-child(2) {
+            width: 400px;
+            height: 400px;
+            background: var(--secondary);
+            bottom: 20%;
+            right: 15%;
+            animation: float 10s ease-in-out infinite;
+        }
+
+        /* Footer Animation - Conveyor Belt */
+        .footer-animation {
+            height: 120px;
+            width: 100%;
+            position: relative;
+            margin-bottom: 50px;
+            overflow: hidden;
+        }
+
+        .conveyor-belt {
+            display: flex;
+            position: absolute;
+            animation: scrollBelt 30s linear infinite;
+        }
+
+        .animal-icon {
+            font-size: 3rem;
+            margin: 0 40px;
+            transition: all 0.3s ease;
+            position: relative;
+            animation: floatIcon 5s ease-in-out infinite;
+        }
+
+        @keyframes scrollBelt {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 50px;
+            max-width: 1200px;
+            margin: 0 auto 80px;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            display: inline-block;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .footer-description {
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--glass);
+            border: 1px solid var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light);
+            transition: var(--transition);
+            font-size: 1.2rem;
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 20px rgba(92, 204, 96, 0.3);
+        }
+
+        .footer-links h3 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            color: var(--light);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+            font-size: 1.1rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 60px;
+            border-top: 1px solid var(--light-gray);
+            color: var(--gray);
+            font-size: 1rem;
+        }
+
+
+        /* Content Blocks */
+        .content-block {
+            background: var(--glass);
+            border: 1px solid var(--light-gray);
+            border-radius: var(--border-radius);
+            padding: 60px;
+            margin-bottom: 60px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: var(--primary);
+            position: relative;
+        }
+
+        /* Impact Grid */
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin: 60px 0;
+        }
+
+        .impact-card {
+            background: var(--darker);
+            border-radius: var(--border-radius);
+            padding: 40px 30px;
+            text-align: center;
+            border: 1px solid var(--light-gray);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .impact-card.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .impact-icon {
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            display: inline-block;
+            transform: scale(0.8);
+            opacity: 0;
+            transition: all 0.8s cubic-bezier(0.68, -0.6, 0.32, 1.6) 0.2s;
+        }
+
+        .impact-card.active .impact-icon {
+            transform: scale(1) rotate(0);
+            opacity: 1;
+        }
+
+        .impact-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #fff 0%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
+        }
+
+        .impact-card.active h3 {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .impact-card p {
+            color: var(--gray);
+            line-height: 1.8;
+            font-size: 1.1rem;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s;
+        }
+
+        .impact-card.active p {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        @keyframes floatIcon {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(5deg); }
+        }
+
+        /* Testimonials */
+        .testimonial {
+            border-left: 3px solid var(--primary);
+            padding-left: 30px;
+            margin: 50px 0;
+            font-style: italic;
+            position: relative;
+        }
+
+        .testimonial::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 10px;
+            font-size: 5rem;
+            color: var(--primary-light);
+            z-index: -1;
+        }
+
+        .testimonial-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        /* Action Steps */
+        .action-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 30px;
+            background: var(--darker);
+            border-radius: var(--border-radius);
+            border: 1px solid var(--light-gray);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .step.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .step-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary);
+            min-width: 50px;
+            transform: scale(0.8);
+            opacity: 0;
+            transition: all 0.8s cubic-bezier(0.68, -0.6, 0.32, 1.6) 0.2s;
+        }
+
+        .step.active .step-number {
+            transform: scale(1) rotate(0);
+            opacity: 1;
+        }
+
+        .step-content h4 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--light);
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
+        }
+
+        .step.active .step-content h4 {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .step-content p {
+            color: var(--gray);
+            line-height: 1.8;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s;
+        }
+
+        .step.active .step-content p {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* New Section: Our Events */
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .event-card {
+            background: var(--darker);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            border: 1px solid var(--light-gray);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .event-card.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .event-date {
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .event-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--light);
+        }
+
+        .event-description {
+            color: var(--gray);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease forwards;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .join-heading {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .content-block {
+                padding: 50px 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .glass-nav {
+                flex-direction: column;
+                gap: 20px;
+                padding: 20px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .join-heading {
+                font-size: 2.5rem;
+            }
+            
+            .join-subheading {
+                font-size: 1.1rem;
+            }
+            
+            .content-block {
+                padding: 40px 30px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .impact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-animation {
+                height: 80px;
+            }
+            
+            .animal-icon {
+                font-size: 2.5rem;
+                margin: 0 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .join-heading {
+                font-size: 2rem;
+            }
+            
+            .join-subheading {
+                font-size: 1rem;
+            }
+            
+            .content-block {
+                padding: 30px 20px;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .impact-card h3, .step-content h4 {
+                font-size: 1.4rem;
+            }
+            
+            .footer-logo {
+                font-size: 1.8rem;
+            }
+            
+            .footer-links h3 {
+                font-size: 1.2rem;
+            }
+            
+            .footer-links a {
+                font-size: 1rem;
+            }
+
+            .footer-animation {
+                height: 60px;
+            }
+            
+            .animal-icon {
+                font-size: 2rem;
+                margin: 0 15px;
+            }
+        }
+
+        .active-btn {
+    border: 2px solid #ffcc00; /* Highlight border */
+    box-shadow: 0 0 10px #ffcc00; /* Glow effect */
+    transition: all 0.3s ease-in-out;
+}
+
+/* Optional animation for a lightning effect */
+@keyframes lightning {
+    0% { box-shadow: 0 0 5px #ffcc00; }
+    50% { box-shadow: 0 0 15px #ffcc00; }
+    100% { box-shadow: 0 0 5px #ffcc00; }
+}
+
+.active-btn:hover {
+    animation: lightning 0.8s infinite alternate;
+}
+
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.glass-nav {
+    transition: transform 0.3s ease;
+}
+
+/* Desktop Navigation */
+@media (min-width: 769px) {
+    .glass-nav.hide-nav {
+        transform: translateY(-100%);
+    }
+    
+    .nav-links {
+        display: flex;
+        gap: 30px;
+        margin: 0 auto;
+    }
+    
+    .mobile-menu-btn,
+    .mobile-join-btn {
+        display: none;
+    }
+    
+    .desktop-join-btn {
+        margin-left: auto;
+    }
+}
+
+/* Mobile Navigation */
+@media (max-width: 768px) {
+    .glass-nav.scrolling {
+        transform: translateY(-100%);
+    }
+    
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 300px;
+        height: 100vh;
+        background: var(--darker);
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 100px 30px 30px;
+        gap: 25px;
+        transition: right 0.3s ease;
+        z-index: 90;
+        border-left: 1px solid var(--light-gray);
+    }
+    
+    .nav-links.active {
+        right: 0;
+    }
+    
+    .desktop-join-btn {
+        display: none;
+    }
+    
+    .mobile-menu-btn {
+        display: flex;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.8rem;
+        cursor: pointer;
+        margin-left: auto;
+        z-index: 100;
+        padding: 10px;
+    }
+    
+    .mobile-menu-btn .close-icon {
+        display: none;
+    }
+    
+    .mobile-menu-btn.active .close-icon {
+        display: block;
+    }
+    
+    .mobile-menu-btn.active .menu-icon {
+        display: none;
+    }
+    
+    .mobile-join-btn {
+        margin-top: 30px;
+        width: 100%;
+    }
+}
+
+/* Active nav link highlighting */
+.nav-links a.active {
+    color: var(--primary);
+}
+
+.nav-links a.active::after {
+    width: 100%;
+}
+
+
+
+.footer {
+    padding: 60px 5% 40px;
+}
+
+.footer-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin-bottom: 50px;
+}
+
+.footer-col {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.footer-links {
+    margin-bottom: 30px;
+}
+
+.footer-links h3 {
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+}
+
+.footer-links ul {
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 12px;
+}
+
+.social-links {
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.footer-animation {
+    height: 80px;
+    margin-bottom: 30px;
+}
+
+.animal-icon {
+    font-size: 2.2rem;
+    margin: 0 20px;
+}
+
+.footer-bottom {
+    padding-top: 40px;
+    font-size: 0.9rem;
+}
+
+/* Tablet and Desktop Styles */
+@media (min-width: 768px) {
+    .footer {
+        padding: 100px 5% 60px;
+    }
+    
+    .footer-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 50px;
+    }
+    
+    .footer-col {
+        text-align: left;
+        margin-bottom: 0;
+    }
+    
+    .footer-links {
+        margin-bottom: 0;
+    }
+    
+    .social-links {
+        justify-content: flex-start;
+    }
+    
+    .footer-animation {
+        height: 120px;
+    }
+    
+    .animal-icon {
+        font-size: 3rem;
+        margin: 0 40px;
+    }
+}
+
+/* Large Desktop Styles */
+@media (min-width: 992px) {
+    .footer-grid {
+        max-width: 1200px;
+        margin: 0 auto 80px;
+    }
+}
+
+
+/* Made with Passion Section - Inspired by huly.io */
+.made-with-love {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 0;
+    font-size: 1.1rem;
+    color: var(--gray);
+    position: relative;
+    overflow: hidden;
+}
+
+.heart-icon {
+    margin: 0 8px;
+    font-size: 1.3rem;
+    display: inline-block;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: pulse 2s infinite;
+}
+
+.passion-text {
+    position: relative;
+    display: inline-block;
+}
+
+.passion-text:first-child::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, var(--primary), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+}
+
+.made-with-love:hover .passion-text:first-child::after {
+    transform: translateX(0);
+}
+
+.passion-text:last-child::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    right: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--primary));
+    transform: translateX(100%);
+    transition: transform 0.6s ease;
+}
+
+.made-with-love:hover .passion-text:last-child::before {
+    transform: translateX(0);
+}
+
+/* Animation for the heart */
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(1); opacity: 0.8; }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .made-with-love {
+        flex-direction: column;
+        gap: 5px;
+        margin: 20px 0;
+    }
+    
+    .heart-icon {
+        margin: 5px 0;
+        transform: rotate(90deg);
+    }
+}
+
+
+
+
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+}
+
+
+
+    </style>
+</head>
+<body>
+    <!-- Particle Background -->
+    <div id="particles-js"></div>
+    
+    <!-- Navigation -->
+    <nav class="glass-nav">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <span class="logo-animate">AnimalSave<span class="india">India</span></span>
+            </a>
+            
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars menu-icon"></i>
+                <i class="fas fa-times close-icon"></i>
+            </button>
+            
+            <div class="nav-links">
+                <a href="/index.html">Home</a>
+                <a href="/OurStory.html">Our Story</a>
+                <a href="/whygovegan.html">Why Go Vegan</a>
+                <a href="/contacts.html">Contact</a>
+                <button class="btn primary-btn mobile-join-btn" onclick="window.location.href='/join.html'">
+                    <span class="btn-text">Join Us Now</span>
+                </button>
+            </div>
+            
+            <div class="desktop-join-btn" >
+                <button class="btn primary-btn" onclick="window.location.href='/join.html'">
+                    <span class="btn-text">Join Us Now</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    
+
+    <div class="join-container">
+        <!-- Hero Section -->
+        <section class="join-hero fade-in">
+            <h1 class="join-heading">Your Plate Has Power</h1>
+            <p class="join-subheading">
+                Every meal is a vote for the world you want to see. Join thousands of compassionate Indians creating real change through plant-based living.
+            </p>
+            <button class="btn primary-btn" onclick="window.location.href='#events'">
+                <span class="btn-text">See Upcoming Events</span>
+            </button>
+        </section>
+
+        <!-- Why Join Section -->
+        <section class="content-block fade-in" style="animation-delay: 0.3s;">
+            <h2 class="section-title">Why Your Choice Matters</h2>
+            <p>In India, over <strong>3.5 million animals</strong> are slaughtered daily for food. By choosing compassion, you're saving lives and:</p>
+            
+            <div class="impact-grid">
+                <div class="impact-card">
+                    <div class="impact-icon">💧</div>
+                    <h3>Saving Water</h3>
+                    <p>1kg of beef requires 15,000 liters of water - enough to drink for 10 years! Plant-based meals use 75% less water.</p>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-icon">🌱</div>
+                    <h3>Healing Earth</h3>
+                    <p>Animal agriculture causes more pollution than all transportation combined. Your plate can reverse climate change.</p>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-icon">❤️</div>
+                    <h3>Ending Suffering</h3>
+                    <p>Dairy cows endure repeated artificial insemination. Egg-laying hens live in spaces smaller than an A4 sheet.</p>
+                </div>
+            </div>
+            
+            <div class="testimonial">
+                <p class="testimonial-text">"After learning about the cruelty in dairy, I went vegan overnight. AnimalSaveIndia's community made the transition so easy with delicious Indian vegan recipes and support groups."</p>
+                <p class="testimonial-author">- Riya M., Mumbai (Vegan since 2020)</p>
+            </div>
+        </section>
+
+        <!-- Action Steps Section -->
+        <section class="content-block fade-in" style="animation-delay: 0.6s;">
+            <h2 class="section-title">Simple Ways to Make a Difference</h2>
+            <p>You don't have to be perfect to make an impact. Start where you are:</p>
+            
+            <div class="action-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Try Vegan Mondays</h4>
+                        <p>Begin with one plant-based day per week. We'll send you easy Indian recipes like vegan dal makhani and aloo gobi.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Discover Dairy Alternatives</h4>
+                        <p>Swap milk with almond or soy milk. Try vegan ghee made from coconut oil. Our taste tests show 89% can't tell the difference!</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Share Your Journey</h4>
+                        <p>Inspire others by posting your vegan meals. Every person who goes vegan saves ~200 animals per year.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Events Section -->
+        <section class="content-block fade-in" id="events" style="animation-delay: 0.9s;">
+            <h2 class="section-title">Upcoming Events</h2>
+            <p>Join our community events to learn more and connect with like-minded people:</p>
+            
+            <div class="events-grid">
+                <div class="event-card">
+                    <div class="event-date">June 15, 2023 | Online</div>
+                    <h3 class="event-title">Vegan Cooking Workshop</h3>
+                    <p class="event-description">Learn to make 5 delicious Indian vegan dishes in this interactive online workshop with celebrity chef Priya Patel.</p>
+                    <button class="btn primary-btn" style="width: 100%;">
+                        <span class="btn-text">Register Now</span>
+                    </button>
+                </div>
+                <div class="event-card">
+                    <div class="event-date">June 22, 2023 | Delhi</div>
+                    <h3 class="event-title">Farm Sanctuary Visit</h3>
+                    <p class="event-description">Spend a day with rescued animals at our Delhi sanctuary and learn their inspiring stories of survival.</p>
+                    <button class="btn primary-btn" style="width: 100%;">
+                        <span class="btn-text">Book Your Spot</span>
+                    </button>
+                </div>
+                <div class="event-card">
+                    <div class="event-date">July 5, 2023 | Nationwide</div>
+                    <h3 class="event-title">Vegan Pledge Challenge</h3>
+                    <p class="event-description">Take our 7-day vegan challenge with daily support, meal plans, and guidance from nutritionists.</p>
+                    <button class="btn primary-btn" style="width: 100%;">
+                        <span class="btn-text">Join Challenge</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-bg">
+            <div class="footer-bg-circle"></div>
+            <div class="footer-bg-circle"></div>
+        </div>
+        
+        <div class="footer-animation">
+            <div class="conveyor-belt">
+                <div class="animal-icon">🐄</div>
+                <div class="animal-icon">🐖</div>
+                <div class="animal-icon">🐓</div>
+                <div class="animal-icon">🐑</div>
+                <div class="animal-icon">🐟</div>
+                <div class="animal-icon">🐄</div>
+                <div class="animal-icon">🐖</div>
+                <div class="animal-icon">🐓</div>
+                <div class="animal-icon">🐑</div>
+                <div class="animal-icon">🐟</div>
+            </div>
+        </div>
+        
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="footer-logo">AnimalSaveIndia</div>
+                <p class="footer-description">Compassionate living for a kinder world. Join our movement to protect animals and promote veganism across India.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <div class="footer-links">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="/join.html#events">Events</a></li>
+                        <li><a href="#">Animal Rights</a></li>
+                        <li><a href="#">Recipes</a></li>
+                        <li><a href="/ourstory.html#documentary-section">Documentaries</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-col">
+                <div class="footer-links">
+                    <h3>Our Compassion's</h3>
+                    <ul>
+                        <li><a href="/index.html">Home</a></li>
+                        <li><a href="/OurStory.html">Our Story</a></li>
+                        <li><a href="/whygovegan.html">Why Go Vegan</a></li>
+                        <li><a href="/contacts.html">Contacts</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-col">
+                <div class="footer-links">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="/PrivacyPolicy.html">Privacy Policy</a></li>
+                        <li><a href="/TermsofService.html">Terms of Service</a></li>
+                        <li><a href="/contacts.html">Contact</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 AnimalSaveIndia. All rights reserved.</p>
+        </div>
+
+        <div class="made-with-love">
+            <span class="passion-text">Made with</span>
+            <span class="heart-icon">❤️</span>
+            <span class="passion-text">by ComputeratePiyush</span>
+        </div>
+        
+    </footer>
+
+    <script>
+const _0x221e43=_0x14eb;(function(_0x14fde0,_0x44a214){const _0x821451=_0x14eb,_0x125179=_0x14fde0();while(!![]){try{const _0x147840=parseInt(_0x821451(0x1fb))/0x1+-parseInt(_0x821451(0x201))/0x2*(parseInt(_0x821451(0x1e7))/0x3)+-parseInt(_0x821451(0x1f8))/0x4*(-parseInt(_0x821451(0x219))/0x5)+parseInt(_0x821451(0x214))/0x6*(-parseInt(_0x821451(0x1e8))/0x7)+-parseInt(_0x821451(0x1ee))/0x8*(-parseInt(_0x821451(0x1f2))/0x9)+-parseInt(_0x821451(0x208))/0xa*(parseInt(_0x821451(0x21f))/0xb)+-parseInt(_0x821451(0x21e))/0xc*(-parseInt(_0x821451(0x1ec))/0xd);if(_0x147840===_0x44a214)break;else _0x125179['push'](_0x125179['shift']());}catch(_0x59d019){_0x125179['push'](_0x125179['shift']());}}}(_0x5866,0xaf0db),document[_0x221e43(0x20a)](_0x221e43(0x1e6),function(){const _0x283350=_0x221e43;typeof particlesJS!==_0x283350(0x20d)&&particlesJS('particles-js',{'particles':{'number':{'value':0x50},'color':{'value':_0x283350(0x212)},'shape':{'type':_0x283350(0x210)},'opacity':{'value':0.5,'random':!![]},'size':{'value':0x3,'random':!![]},'line_linked':{'enable':!![],'distance':0x96,'color':_0x283350(0x212),'opacity':0.3,'width':0x1},'move':{'enable':!![],'speed':0x2,'direction':'none','random':!![],'straight':![],'out_mode':'out','bounce':![]}},'interactivity':{'detect_on':_0x283350(0x1ff),'events':{'onhover':{'enable':!![],'mode':'repulse'},'onclick':{'enable':!![],'mode':_0x283350(0x204)}}}});const _0x4263ab=document['querySelector'](_0x283350(0x1f3));if(_0x4263ab){let _0x47f5aa=0x0;const _0x35261d=[_0x283350(0x209),_0x283350(0x207),_0x283350(0x1f0)];let _0x23c310=0x0;setInterval(()=>{const _0x3e94fa=_0x283350;_0x47f5aa+=0.15;const _0x225a3a=Math[_0x3e94fa(0x1ed)](_0x47f5aa)*0x8;_0x4263ab[_0x3e94fa(0x218)][_0x3e94fa(0x228)]=_0x3e94fa(0x21c)+_0x225a3a+_0x3e94fa(0x206);if(_0x47f5aa%(Math['PI']*0x2)<0.1){_0x23c310=(_0x23c310+0x1)%_0x35261d[_0x3e94fa(0x217)];const _0x22c13c=(_0x23c310+0x1)%_0x35261d[_0x3e94fa(0x217)];_0x4263ab[_0x3e94fa(0x218)][_0x3e94fa(0x1ea)]='linear-gradient(to\x20right,\x20'+_0x35261d[_0x23c310]+',\x20'+_0x35261d[_0x22c13c]+')',_0x4263ab['style'][_0x3e94fa(0x224)]=_0x3e94fa(0x1ef),_0x4263ab[_0x3e94fa(0x218)][_0x3e94fa(0x1f6)]='text';}},0x32);}document[_0x283350(0x200)](_0x283350(0x20c))[_0x283350(0x227)](_0x8d7290=>{const _0x9c6713=_0x283350;_0x8d7290[_0x9c6713(0x20a)](_0x9c6713(0x215),function(_0x2bf04d){const _0xeff857=_0x9c6713,_0x1b4ab8=_0x8d7290['getBoundingClientRect'](),_0x2049a3=_0x2bf04d[_0xeff857(0x1f9)]-_0x1b4ab8['left'],_0x4bc8fc=_0x2bf04d['clientY']-_0x1b4ab8['top'],_0x3b2f2d=document['createElement']('span');_0x3b2f2d[_0xeff857(0x21a)][_0xeff857(0x1f5)](_0xeff857(0x1e5)),_0x3b2f2d[_0xeff857(0x218)]['left']=_0x2049a3+'px',_0x3b2f2d['style']['top']=_0x4bc8fc+'px',this['appendChild'](_0x3b2f2d),setTimeout(()=>{_0x3b2f2d['remove']();},0x258);});});const _0xde20f7=new IntersectionObserver(_0x173232=>{_0x173232['forEach'](_0x70e416=>{const _0x101c9a=_0x14eb;_0x70e416[_0x101c9a(0x1eb)]&&_0x70e416[_0x101c9a(0x21b)][_0x101c9a(0x21a)]['add'](_0x101c9a(0x1e9));});},{'threshold':0.2});document[_0x283350(0x200)]('.impact-card,\x20.step,\x20.event-card')[_0x283350(0x227)](_0x4d4134=>{_0xde20f7['observe'](_0x4d4134);}),document[_0x283350(0x200)](_0x283350(0x229))['forEach'](_0x3323b6=>{const _0x4a009d=_0x283350;_0x3323b6[_0x4a009d(0x20a)]('mouseenter',()=>{const _0x2c4304=_0x4a009d;_0x3323b6[_0x2c4304(0x218)][_0x2c4304(0x228)]=_0x2c4304(0x1fd),_0x3323b6[_0x2c4304(0x218)][_0x2c4304(0x20e)]=_0x2c4304(0x205);}),_0x3323b6[_0x4a009d(0x20a)](_0x4a009d(0x220),()=>{const _0x34576c=_0x4a009d;_0x3323b6['style'][_0x34576c(0x228)]='',_0x3323b6[_0x34576c(0x218)][_0x34576c(0x20e)]=_0x34576c(0x213);});});}),document[_0x221e43(0x20a)]('DOMContentLoaded',function(){const _0x259c6d=_0x221e43;window['location'][_0x259c6d(0x1fc)][_0x259c6d(0x20b)](_0x259c6d(0x1fe))&&(document['querySelector'](_0x259c6d(0x211))['classList'][_0x259c6d(0x1f5)]('active-btn'),document[_0x259c6d(0x1e4)](_0x259c6d(0x226))[_0x259c6d(0x21a)][_0x259c6d(0x1f5)](_0x259c6d(0x1f7)));}));let lastScroll=0x0;function _0x5866(){const _0x241e15=['.india','href','add','backgroundClip','active-btn','28xyONdn','clientX','scroll','11162hIHSkR','pathname','scale(1.2)\x20rotate(10deg)','join.html','canvas','querySelectorAll','10GtcRpM','.nav-links','hide-nav','push','none','px)','#FFFFFF','6128740xAhUej','#FF9933','addEventListener','includes','.btn','undefined','animation','contains','circle','.mobile-join-btn','#5CCC60','floatIcon\x205s\x20ease-in-out\x20infinite','12ldPHMj','click','preventDefault','length','style','151190KjdXrz','classList','target','translateY(','ctrlKey','6388980LgGwYe','22ibugsR','mouseleave','toggle','key','remove','webkitBackgroundClip','offsetTop','.desktop-join-btn\x20.primary-btn','forEach','transform','.animal-icon','getAttribute','.mobile-menu-btn','scrolling','querySelector','ripple-effect','DOMContentLoaded','690057iECrES','2799755UdvAAZ','active','background','isIntersecting','78pFlqsY','sin','16tJrkZr','text','#138808','.glass-nav','2139633TQvbsD'];_0x5866=function(){return _0x241e15;};return _0x5866();}function _0x14eb(_0x2edef3,_0xde7889){const _0x586616=_0x5866();return _0x14eb=function(_0x14ebc4,_0x3c39b3){_0x14ebc4=_0x14ebc4-0x1e1;let _0x3429f=_0x586616[_0x14ebc4];return _0x3429f;},_0x14eb(_0x2edef3,_0xde7889);}const navbar=document[_0x221e43(0x1e4)](_0x221e43(0x1f1)),mobileMenuBtn=document['querySelector'](_0x221e43(0x1e2)),navLinks=document['querySelector'](_0x221e43(0x202)),navItems=document[_0x221e43(0x200)]('.nav-links\x20a'),isMobile=window['matchMedia']('(max-width:\x20768px)')['matches'];mobileMenuBtn[_0x221e43(0x20a)]('click',()=>{const _0x3e8032=_0x221e43;mobileMenuBtn[_0x3e8032(0x21a)][_0x3e8032(0x221)](_0x3e8032(0x1e9)),navLinks[_0x3e8032(0x21a)][_0x3e8032(0x221)](_0x3e8032(0x1e9));}),navItems[_0x221e43(0x227)](_0xdd07cf=>{const _0x3d989b=_0x221e43;_0xdd07cf[_0x3d989b(0x20a)](_0x3d989b(0x215),()=>{const _0x420d8f=_0x3d989b;isMobile&&(mobileMenuBtn[_0x420d8f(0x21a)][_0x420d8f(0x223)]('active'),navLinks[_0x420d8f(0x21a)]['remove'](_0x420d8f(0x1e9)));});}),window[_0x221e43(0x20a)](_0x221e43(0x1fa),()=>{const _0x1d2e61=_0x221e43,_0x1cb660=window['pageYOffset'];if(isMobile)_0x1cb660<=0x0?navbar[_0x1d2e61(0x21a)][_0x1d2e61(0x223)](_0x1d2e61(0x1e3)):navbar['classList'][_0x1d2e61(0x1f5)](_0x1d2e61(0x1e3));else{if(_0x1cb660<=0x0)navbar[_0x1d2e61(0x21a)][_0x1d2e61(0x223)](_0x1d2e61(0x203));else{if(_0x1cb660>lastScroll&&!navbar[_0x1d2e61(0x21a)][_0x1d2e61(0x20f)]('hide-nav'))navbar['classList'][_0x1d2e61(0x1f5)](_0x1d2e61(0x203));else _0x1cb660<lastScroll&&navbar[_0x1d2e61(0x21a)]['contains'](_0x1d2e61(0x203))&&navbar[_0x1d2e61(0x21a)][_0x1d2e61(0x223)](_0x1d2e61(0x203));}}lastScroll=_0x1cb660;const _0x51bc62=document['querySelectorAll']('section');let _0x56d330='';_0x51bc62[_0x1d2e61(0x227)](_0x6f3382=>{const _0x1af9f1=_0x1d2e61,_0x132c6a=_0x6f3382[_0x1af9f1(0x225)],_0x9e5d2c=_0x6f3382['clientHeight'];pageYOffset>=_0x132c6a-0x12c&&(_0x56d330=_0x6f3382[_0x1af9f1(0x1e1)]('id'));}),navItems[_0x1d2e61(0x227)](_0xab4961=>{const _0x3aef20=_0x1d2e61;_0xab4961[_0x3aef20(0x21a)]['remove'](_0x3aef20(0x1e9)),_0xab4961['getAttribute'](_0x3aef20(0x1f4))==='#'+_0x56d330&&_0xab4961[_0x3aef20(0x21a)][_0x3aef20(0x1f5)](_0x3aef20(0x1e9));});}),document[_0x221e43(0x20a)]('contextmenu',_0x3dedc1=>_0x3dedc1[_0x221e43(0x216)]()),document['onkeydown']=function(_0x1b8e33){const _0x31c318=_0x221e43;if(_0x1b8e33[_0x31c318(0x21d)]&&(_0x1b8e33[_0x31c318(0x222)]==='u'||_0x1b8e33['key']==='s'||_0x1b8e33[_0x31c318(0x222)]==='i'||_0x1b8e33[_0x31c318(0x222)]==='j'))return![];};
+
+    </script>
+</body>
+</html>
